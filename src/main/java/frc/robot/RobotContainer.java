@@ -49,6 +49,7 @@ public class RobotContainer
     // Configure the trigger bindings
     configureBindings();
 
+    @SuppressWarnings("unused")
     AbsoluteDriveAdv closedAbsoluteDriveAdv = new AbsoluteDriveAdv(drivebase,
                                                                    () -> MathUtil.applyDeadband(driverXbox.getLeftY(),
                                                                                                 OperatorConstants.LEFT_Y_DEADBAND),
@@ -77,6 +78,7 @@ public class RobotContainer
     // controls are front-left positive
     // left stick controls translation
     // right stick controls the angular velocity of the robot
+    @SuppressWarnings("unused")
     Command driveFieldOrientedAnglularVelocity = drivebase.driveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
