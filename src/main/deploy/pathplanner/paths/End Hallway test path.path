@@ -1,0 +1,52 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.429694682398216,
+        "y": 6.465729037652766
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.9767218649481553,
+        "y": 6.443934445391014
+      },
+      "isLocked": false,
+      "linkedName": "Test Note"
+    },
+    {
+      "anchor": {
+        "x": 2.0,
+        "y": 7.0
+      },
+      "prevControl": {
+        "x": 4.049370505820658,
+        "y": 7.025123572371038
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Hallway Start"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 179.72833775146376,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": -89.18154453831154,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

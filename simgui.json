@@ -1,21 +1,6 @@
 {
   "HALProvider": {
     "Other Devices": {
-      "SPARK MAX [2]": {
-        "header": {
-          "open": true
-        }
-      },
-      "SPARK MAX [4]": {
-        "header": {
-          "open": true
-        }
-      },
-      "SPARK MAX [5]": {
-        "header": {
-          "open": true
-        }
-      },
       "SPARK MAX [7]": {
         "header": {
           "open": true
@@ -98,13 +83,55 @@
     }
   },
   "NetworkTables": {
+    "Persistent Values": {
+      "open": false
+    },
+    "Retained Values": {
+      "open": false
+    },
     "transitory": {
+      "PathPlanner": {
+        "open": true
+      },
+      "Shuffleboard": {
+        "open": true
+      },
       "SmartDashboard": {
+        "Encoders": {
+          "open": true
+        },
         "Field": {
+          "double[]##v_/SmartDashboard/Field/Robot": {
+            "open": true
+          },
+          "double[]##v_/SmartDashboard/Field/XModules": {
+            "open": true
+          },
+          "open": true
+        },
+        "IMU": {
+          "open": true
+        },
+        "JSON": {
+          "open": true
+        },
+        "Swerve Drive": {
           "open": true
         },
         "open": true,
         "swerve": {
+          "double[]##v_/SmartDashboard/swerve/desiredChassisSpeeds": {
+            "open": true
+          },
+          "double[]##v_/SmartDashboard/swerve/desiredStates": {
+            "open": true
+          },
+          "double[]##v_/SmartDashboard/swerve/measuredChassisSpeeds": {
+            "open": true
+          },
+          "double[]##v_/SmartDashboard/swerve/measuredStates": {
+            "open": true
+          },
           "open": true
         }
       }

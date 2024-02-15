@@ -1,10 +1,10 @@
 {
   "imu": {
-    "type": "navx_spi",
+    "type": "navx_mpx_serial",
     "id": 0,
     "canbus": null
   },
-  "invertedIMU": false,
+  "invertedIMU": true,
   "modules": [
     "frontleft.json",
     "frontright.json",
