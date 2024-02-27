@@ -50,6 +50,7 @@
       "/SmartDashboard/Pigeon 2 [13]": "Gyro",
       "/SmartDashboard/SendableChooser[0]": "String Chooser",
       "/SmartDashboard/navX-Sensor[1]": "Gyro",
+      "/SmartDashboard/navX-Sensor[2]": "Gyro",
       "/SmartDashboard/navX-Sensor[4]": "Gyro"
     },
     "windows": {
@@ -86,11 +87,17 @@
     "Persistent Values": {
       "open": false
     },
-    "Retained Values": {
-      "open": false
-    },
     "transitory": {
       "PathPlanner": {
+        "double[]##v_/PathPlanner/activePath": {
+          "open": true
+        },
+        "double[]##v_/PathPlanner/currentPose": {
+          "open": true
+        },
+        "double[]##v_/PathPlanner/targetPose": {
+          "open": true
+        },
         "open": true
       },
       "Shuffleboard": {
@@ -138,6 +145,8 @@
     }
   },
   "NetworkTables Info": {
-    "visible": true
+    "Server": {
+      "open": true
+    }
   }
 }

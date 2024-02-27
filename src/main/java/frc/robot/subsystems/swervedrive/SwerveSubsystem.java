@@ -10,6 +10,8 @@ import com.pathplanner.lib.path.PathConstraints;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.ReplanningConfig;
+
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -23,6 +25,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
 import frc.robot.Constants.AutonConstants;
+import frc.robot.LimelightHelpers;
+
 import java.io.File;
 import java.util.function.DoubleSupplier;
 import org.photonvision.PhotonCamera;
@@ -323,6 +327,7 @@ public class SwerveSubsystem extends SubsystemBase
   @Override
   public void periodic()
   {
+
   }
 
   @Override
@@ -516,5 +521,12 @@ public class SwerveSubsystem extends SubsystemBase
   public void addFakeVisionReading()
   {
     swerveDrive.addVisionMeasurement(new Pose2d(3, 3, Rotation2d.fromDegrees(65)), Timer.getFPGATimestamp());
+    LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
+   if(limelightMeasurement.tagCount >= 2)
+   {
+     swerveDrive.addVisionMeasurement(
+         limelightMeasurement.pose,
+         limelightMeasurement.timestampSeconds);
+   }
   }
 }
