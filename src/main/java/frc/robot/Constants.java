@@ -5,6 +5,8 @@
 package frc.robot;
 
 import com.pathplanner.lib.util.PIDConstants;
+import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
@@ -20,6 +22,36 @@ import swervelib.math.Matter;
  */
 public final class Constants
 {
+public static int id_sht_intake  = 13;
+public static int id_sht_feeder_l  = 14;
+public static int id_sht_feeder_r  = 15;
+public static int id_sht_flywheel_l  = 16;
+public static int id_sht_flywheel_r  = 17;
+public static int id_clmb_left  = 18;
+public static int id_clmb_right  = 19;
+
+//Set Motor Type
+public static CANSparkLowLevel.MotorType k_sht_intake = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_sht_feeder_l = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_sht_feeder_r = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_sht_flywheel_l = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_sht_flywheel_r = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_clmb_left = MotorType.kBrushless;
+public static CANSparkLowLevel.MotorType k_clmb_right = MotorType.kBrushless;
+
+// Climber Max Encoder Positions 1024rev = 360deg
+public static int pos_clmb_max  = 2048;
+public static int poS_clmb_min  = 0;
+
+public static double sm_sht_intake  = 1;
+public static double sm_sht_feeder_l  = 1;
+public static double sm_sht_feeder_r  = 1;
+public static double sm_sht_flywheel_l  = 1;
+public static double sm_sht_flywheel_r  = 1;
+public static double sm_clmb_left  = 1;
+public static double sm_clmb_right  = 1;
+
+
 
   public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
   public static final Matter CHASSIS    = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
