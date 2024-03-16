@@ -26,6 +26,7 @@ public class climber extends SubsystemBase{
   double Kd;
   CANSparkMax mClimberL = new CANSparkMax(climberL.id, climberL.neo);
   CANSparkMax mClimberR = new CANSparkMax(climberR.id, climberR.neo);
+  
 
 
   PIDController pid = new PIDController(Kp, Ki, Kd);
@@ -43,6 +44,8 @@ public class climber extends SubsystemBase{
       double speedR = input_speed * climberR.power;
       mClimberL.set(speedL);
       mClimberR.set(speedR);
+
+      pid.calculate(getPosition(), position)
       
     }
     public void go(int setpoint){

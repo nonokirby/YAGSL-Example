@@ -38,7 +38,6 @@ import swervelib.math.SwerveMath;
 import swervelib.parser.SwerveControllerConfiguration;
 import swervelib.parser.SwerveDriveConfiguration;
 import swervelib.parser.SwerveParser;
-import swervelib.parser.json.MotorConfigDouble;
 import swervelib.telemetry.SwerveDriveTelemetry;
 import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
@@ -100,7 +99,6 @@ public class SwerveSubsystem extends SubsystemBase
   public SwerveSubsystem(SwerveDriveConfiguration driveCfg, SwerveControllerConfiguration controllerCfg)
   {
     swerveDrive = new SwerveDrive(driveCfg, controllerCfg, maximumSpeed);
-    swerveDrive.swerveController.thetaController.setTolerance(0.5);
   }
 
   /**
@@ -207,11 +205,7 @@ public class SwerveSubsystem extends SubsystemBase
       double xInput = Math.pow(translationX.getAsDouble(), 3); // Smooth controll out
       double yInput = Math.pow(translationY.getAsDouble(), 3); // Smooth controll out
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
-                                                                      headingX.getAsDouble(),
-                                                                      headingY.getAsDouble(),
-                                                                      swerveDrive.getOdometryHeading().getRadians(),
-                                                                      swerveDrive.getMaximumVelocity()));
+      driveFieldOriented(ChassisSpeeds.fromFieldRelativeSpeeds(new ChassisSpeeds(yInput * 3.0, xInput* 3.0, headingX.getAsDouble() * 2.0 * Math.PI), getHeading()));
     });
   }
 
@@ -395,7 +389,6 @@ public class SwerveSubsystem extends SubsystemBase
   public void zeroGyro()
   {
     swerveDrive.zeroGyro();
-    
   }
 
   /**
