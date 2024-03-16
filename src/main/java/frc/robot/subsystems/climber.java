@@ -10,9 +10,9 @@ import edu.wpi.first.hal.AddressableLEDJNI;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.Constants.climberL;
-import frc.robot.subsystems.Constants.climberLim;
-import frc.robot.subsystems.Constants.climberR;
+import frc.robot.Constants.climberL;
+import frc.robot.Constants.climberLim;
+import frc.robot.Constants.climberR;
 
 import java.lang.Math;
 import com.revrobotics.CANSparkMax.*;
