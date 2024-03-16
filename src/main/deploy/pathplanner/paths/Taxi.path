@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 0.5447222323016081,
+        "y": 2.1109619362095873
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9999999999999973,
-        "y": 7.0
+        "x": 2.289197721249782,
+        "y": 2.6387024202620513
       },
       "isLocked": false,
       "linkedName": "Hallway Start"
     },
     {
       "anchor": {
-        "x": 5.429694682398216,
-        "y": 6.465729037652766
+        "x": 2.289197721249782,
+        "y": 3.6062266410247785
       },
       "prevControl": {
-        "x": 5.480548731008968,
-        "y": 7.2866586795120485
+        "x": 2.6996625421794236,
+        "y": 2.682680793933084
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0,
+    "rotation": 111.8014094863518,
     "rotateFast": false
   },
   "reversed": false,

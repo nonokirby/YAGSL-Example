@@ -63,6 +63,7 @@ public class Robot extends TimedRobot
     disabledTimer = new Timer();
     DataLogManager.start();
     DriverStation.startDataLog(DataLogManager.getLog());
+    
   }
 
   /**
