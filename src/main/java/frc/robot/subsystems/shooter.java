@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Constants.*;
+import frc.robot.Constants.*;
 public class shooter extends SubsystemBase {
   
   CANSparkMax mIntake = new CANSparkMax(intake.id, intake.neo);
@@ -45,12 +45,12 @@ public class shooter extends SubsystemBase {
       mFeederR.set(feedSpeedR);    
     } 
 
-    public void periodic(){
+   /* public void periodic(){
         double flywheelSpeedL = RobotContainer.shooterXbox.getLeftTriggerAxis() * flywheelL.power;
         double flywheelSpeedR = RobotContainer.shooterXbox.getLeftTriggerAxis() * flywheelR.power;
         mFlywheelL.set(flywheelSpeedL);
         mFlywheelR.set(flywheelSpeedR);
-      }
+      }*/
     }
 
     

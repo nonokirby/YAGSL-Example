@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -21,20 +22,23 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.climber.down;
 import frc.robot.commands.climber.left;
 import frc.robot.commands.climber.right;
 import frc.robot.commands.climber.up;
 import frc.robot.commands.flap.lower;
 import frc.robot.commands.flap.raise;
+import frc.robot.commands.shooter.feed;
 import frc.robot.commands.shooter.flywheel;
 import frc.robot.commands.shooter.intake;
+import frc.robot.commands.shooter.spit;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
 import frc.robot.subsystems.climber;
 import frc.robot.subsystems.shooter;
-import frc.robot.subsystems.Constants.OperatorConstants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -56,7 +60,7 @@ public class RobotContainer
 
   // CommandJoystick driverController   = new CommandJoystick(3);//(OperatorConstants.DRIVER_CONTROLLER_PORT);
   public XboxController driverXbox = new XboxController(OperatorConstants.XBOX_DRIVER_PORT);
-  public static XboxController shooterXbox = new XboxController(OperatorConstants.XBOX_SHOOTER_PORT);
+  CommandXboxController shooterXbox = new CommandXboxController(OperatorConstants.XBOX_SHOOTER_PORT);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -86,7 +90,7 @@ public class RobotContainer
     // right stick controls the desired angle NOT angular rotation
     Command driveFieldOrientedDirectAngle = drivebase.driveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftTriggerAxis(), OperatorConstants.LEFT_X_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRightX(),
         () -> driverXbox.getRightY());
     
@@ -98,8 +102,8 @@ public class RobotContainer
     // right stick controls the angular velocity of the robot
     @SuppressWarnings("unused")
     Command driveFieldOrientedAnglularVelocity = drivebase.driveCommand(
-        () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
+        () -> MathUtil.applyDeadband((driverXbox.getLeftY()) * -1,OperatorConstants.LEFT_Y_DEADBAND),
+        () -> MathUtil.applyDeadband((driverXbox.getLeftX()) * -1, OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRawAxis(2));
 
     Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
@@ -123,28 +127,29 @@ public class RobotContainer
   {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     
+
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
     new JoystickButton(driverXbox, 3).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
 
-    new JoystickButton(driverXbox, 2).whileTrue(
-        Commands.deferredProxy(() -> drivebase.driveToPose(new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
+    new JoystickButton(driverXbox, 2).whileTrue(Commands.deferredProxy(() -> drivebase.driveToPose(new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
+    shooterXbox.rightTrigger().onTrue(new spit());
+    shooterXbox.rightBumper().onTrue(new feed());
+    shooterXbox.a().onTrue(new raise());
+    shooterXbox.b().onTrue(new lower());
+    shooterXbox.leftBumper().onTrue(new intake());
+    shooterXbox.leftTrigger().onTrue(new flywheel());
 
-    new JoystickButton(shooterXbox, 5).onTrue(new intake());
-    new JoystickButton(shooterXbox, 1).whileTrue(new raise());
-    new JoystickButton(shooterXbox, 2).whileTrue(new lower());
 
     //Dpad for Climber
-    new POVButton(shooterXbox,  45).whileTrue(new up());
-    new POVButton(shooterXbox,   0).whileTrue(new up());
-    new POVButton(shooterXbox, 315).whileTrue(new up());
 
-    new POVButton(shooterXbox, 135).whileTrue(new down());
-    new POVButton(shooterXbox, 225).whileTrue(new down());
-    new POVButton(shooterXbox, 180).whileTrue(new down());
-
-    new POVButton(shooterXbox,  90).whileTrue(new right());
-
-    new POVButton(shooterXbox, 270).whileTrue(new left());
+    new POVButton(shooterXbox.getHID(),  45).whileTrue(new up());
+    new POVButton(shooterXbox.getHID(),   0).whileTrue(new up());
+    new POVButton(shooterXbox.getHID(), 315).whileTrue(new up());
+    new POVButton(shooterXbox.getHID(), 135).whileTrue(new down());
+    new POVButton(shooterXbox.getHID(), 225).whileTrue(new down());
+    new POVButton(shooterXbox.getHID(), 180).whileTrue(new down());
+    new POVButton(shooterXbox.getHID(),  90).whileTrue(new right());
+    new POVButton(shooterXbox.getHID(), 270).whileTrue(new left());
 
     
 //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
@@ -158,7 +163,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("New Auto");
+    return drivebase.getAutonomousCommand("Nothing");
   }
 
   public void setDriveMode()

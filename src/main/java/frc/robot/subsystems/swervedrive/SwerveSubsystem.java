@@ -10,6 +10,8 @@ import com.pathplanner.lib.path.PathConstraints;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.ReplanningConfig;
+
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -22,7 +24,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
-import frc.robot.subsystems.Constants.AutonConstants;
+import frc.robot.Constants.AutonConstants;
+import frc.robot.LimelightHelpers;
 
 import java.io.File;
 import java.util.function.DoubleSupplier;
@@ -202,11 +205,7 @@ public class SwerveSubsystem extends SubsystemBase
       double xInput = Math.pow(translationX.getAsDouble(), 3); // Smooth controll out
       double yInput = Math.pow(translationY.getAsDouble(), 3); // Smooth controll out
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
-                                                                      headingX.getAsDouble(),
-                                                                      headingY.getAsDouble(),
-                                                                      swerveDrive.getOdometryHeading().getRadians(),
-                                                                      swerveDrive.getMaximumVelocity()));
+      driveFieldOriented(ChassisSpeeds.fromFieldRelativeSpeeds(new ChassisSpeeds(yInput * 3.0, xInput* 3.0, headingX.getAsDouble() * 2.0 * Math.PI), getHeading()));
     });
   }
 
@@ -324,6 +323,7 @@ public class SwerveSubsystem extends SubsystemBase
   @Override
   public void periodic()
   {
+
   }
 
   @Override
@@ -409,7 +409,7 @@ public class SwerveSubsystem extends SubsystemBase
    */
   public Rotation2d getHeading()
   {
-    return getPose().getRotation();
+    return getPose().getRotation().rotateBy(Rotation2d.fromDegrees(90.0));
   }
   /**
    * Get the chassis speeds based on controller input of 2 joysticks. One for speeds in which direction. The other for
@@ -517,5 +517,12 @@ public class SwerveSubsystem extends SubsystemBase
   public void addFakeVisionReading()
   {
     swerveDrive.addVisionMeasurement(new Pose2d(3, 3, Rotation2d.fromDegrees(65)), Timer.getFPGATimestamp());
+    //LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
+   /*if(limelightMeasurement.tagCount >= 2)
+   {
+     swerveDrive.addVisionMeasurement(
+         limelightMeasurement.pose,
+         limelightMeasurement.timestampSeconds);
+   }*/
   }
 }
