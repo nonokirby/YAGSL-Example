@@ -9,9 +9,11 @@ import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
 import swervelib.math.Matter;
+import swervelib.parser.PIDFConfig;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean constants. This
@@ -64,6 +66,12 @@ public final class Constants
     public static double power  = 1; // Output speed multiplier  -1 to 1
     public static int current = 40;
     public static IdleMode idle = IdleMode.kBrake;
+    public static int encoderid = 22;
+    public static double Kp = 0;
+    public static double Ki = 0;
+    public static double Kd = 0;
+
+
   }
   public static class climberR{
     public static CANSparkLowLevel.MotorType neo = MotorType.kBrushless;
@@ -71,6 +79,7 @@ public final class Constants
     public static double power  = 1; // Output speed multiplier  -1 to 1
     public static int current = 40;
     public static IdleMode idle = IdleMode.kBrake;
+    public static int encoderid = 21;
   }
   public static class ampFlap{
     public static CANSparkLowLevel.MotorType neo = MotorType.kBrushless;
@@ -93,6 +102,9 @@ public final class Constants
     public static int deviation = 250; // in encoder ticks. 1024 tks = 360 deg  defines how far from max or min the encoder can be
     public static double curveDiv = 2;  
     public static double curveMult = .1;
+  }
+
+  public static class climberPID{
   }
 
   

@@ -13,9 +13,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -42,6 +44,7 @@ import java.io.File;
 
 import com.fasterxml.jackson.core.sym.Name;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 
 /**
@@ -58,6 +61,8 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
+                                                                    
+  public SendableChooser<Command> autochooser  = new SendableChooser<Command>();
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //CommandJoystick driverController = new CommandJoystick(1);
@@ -110,6 +115,7 @@ public class RobotContainer
         () -> MathUtil.applyDeadband((driverXbox.getLeftX()) * -1, OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRawAxis(2));
 
+
     Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
@@ -121,7 +127,10 @@ public class RobotContainer
     NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(.5).andThen(new feed().withTimeout(1)));
     NamedCommands.registerCommand("Intake", new intake().withTimeout(3));
     NamedCommands.registerCommand("Lower Note", new spit().withTimeout(.1));
-      
+
+    autochooser.setDefaultOption("Do nothing", new PathPlannerAuto("Shoot Taxi Intake"));
+    autochooser.addOption("Shoot", new PathPlannerAuto("Shoot Taxi Intake"));
+    autochooser.addOption("Taxi", new PathPlannerAuto("Taxi Only"));
   }
 
   /**
@@ -179,7 +188,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Taxi Only");
+    return drivebase.getAutonomousCommand("Shoot Taxi Intake");
   }
 
   public void setDriveMode()

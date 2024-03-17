@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.CANcoder;
+import com.pathplanner.lib.util.PIDConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkAbsoluteEncoder;
@@ -8,7 +10,11 @@ import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.hal.AddressableLEDJNI;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.networktables.NetworkTableValue;
 import edu.wpi.first.wpilibj.CAN;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.climberL;
 import frc.robot.Constants.climberLim;
@@ -21,39 +27,46 @@ import javax.swing.Renderer;
 
 public class climber extends SubsystemBase{
 
-  double Kp;
-  double Ki;
-  double Kd;
   CANSparkMax mClimberL = new CANSparkMax(climberL.id, climberL.neo);
   CANSparkMax mClimberR = new CANSparkMax(climberR.id, climberR.neo);
+  CANcoder encoderL = new CANcoder(climberL.encoderid);
+  CANcoder encoderR = new CANcoder(climberR.encoderid);
+  //  leftencoderpos = encoderL.getPosition().getValueAsDouble();
   
 
 
-  PIDController pid = new PIDController(Kp, Ki, Kd);
+  PIDController kPID = new PIDController(climberL.Kp,climberL.Ki,climberL.Kd);
   int rEncoderDistance;
   double speedL;
   double speedR;
-    
+    public void periodic(){
+      SmartDashboard.putNumber("leftencoder", encoderL.getPosition().getValueAsDouble());
+      SmartDashboard.putNumber("leftencoder", encoderL.getPosition().getValueAsDouble());
+
+  }
     public void setup(){
       mClimberL.clearFaults();
       mClimberL.setIdleMode(IdleMode.kBrake);
       mClimberL.setSmartCurrentLimit(climberL.current);
+      mClimberR.clearFaults();
+      mClimberR.setIdleMode(IdleMode.kBrake);
+      mClimberR.setSmartCurrentLimit(climberR.current);
     }
     public void set(double input_speed){
       double speedL = input_speed * climberL.power;
       double speedR = input_speed * climberR.power;
       mClimberL.set(speedL);
       mClimberR.set(speedR);
-
       //pid.calculate(getPosition(), position)
-      
+
     }
-    public void go(int setpoint){
-      //mClimberL.set(pid.calculate(mClimberL.SparkAbsoluteEncoder.getPosition(),setpoint));
+    public void goSet(int setpoint){
+      mClimberL.set(kPID.calculate(encoderL.getPosition().getValueAsDouble(), setpoint));
+      mClimberR.set(kPID.calculate(encoderR.getPosition().getValueAsDouble(), setpoint));
       //mClimberR.set(pid.calculate(rEncoderDistance,setpoint));
+      
     }
     public void zero(){
-      
     }
 
 

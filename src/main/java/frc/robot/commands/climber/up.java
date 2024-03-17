@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
-public class up extends Command{
+public class up extends InstantCommand{
     
     public up(){
         addRequirements(RobotContainer.climber);
@@ -14,7 +14,9 @@ public class up extends Command{
         RobotContainer.climber.set(1);
     }
     public void end(){
-        RobotContainer.climber.set(0);
+    }
+    public void initialization(){
+        RobotContainer.climber.setup();
     }
     
 }
