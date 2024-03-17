@@ -29,6 +29,7 @@ import frc.robot.commands.climber.right;
 import frc.robot.commands.climber.up;
 import frc.robot.commands.flap.lower;
 import frc.robot.commands.flap.raise;
+import frc.robot.commands.shooter.eject;
 import frc.robot.commands.shooter.feed;
 import frc.robot.commands.shooter.flywheel;
 import frc.robot.commands.shooter.intake;
@@ -90,7 +91,7 @@ public class RobotContainer
     // right stick controls the desired angle NOT angular rotation
     Command driveFieldOrientedDirectAngle = drivebase.driveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getLeftX() * -1, OperatorConstants.LEFT_X_DEADBAND),
         () -> driverXbox.getRightX(),
         () -> driverXbox.getRightY());
     
@@ -132,12 +133,21 @@ public class RobotContainer
     new JoystickButton(driverXbox, 3).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
 
     new JoystickButton(driverXbox, 2).whileTrue(Commands.deferredProxy(() -> drivebase.driveToPose(new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
-    shooterXbox.rightTrigger().onTrue(new spit());
-    shooterXbox.rightBumper().onTrue(new feed());
-    shooterXbox.a().onTrue(new raise());
-    shooterXbox.b().onTrue(new lower());
-    shooterXbox.leftBumper().onTrue(new intake());
-    shooterXbox.leftTrigger().onTrue(new flywheel());
+    /*shooterXbox.rightTrigger().whileTrue(new spit());
+    shooterXbox.rightBumper().whileTrue(new feed());
+    shooterXbox.a().whileTrue(new raise());
+    shooterXbox.b().whileTrue(new lower());
+    shooterXbox.leftBumper().whileTrue(new intake());
+    shooterXbox.leftTrigger().whileTrue(new flywheel());*/
+    shooterXbox.start().whileTrue(new eject());
+    shooterXbox.leftBumper().whileTrue(new intake()).onFalse(new spit().withTimeout(.1));
+    shooterXbox.rightBumper().whileTrue(new flywheel().withTimeout(.5).andThen(new feed()));
+    
+
+
+
+
+
 
 
     //Dpad for Climber

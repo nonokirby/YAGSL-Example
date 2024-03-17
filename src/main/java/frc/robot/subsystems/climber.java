@@ -45,7 +45,7 @@ public class climber extends SubsystemBase{
       mClimberL.set(speedL);
       mClimberR.set(speedR);
 
-      pid.calculate(getPosition(), position)
+      //pid.calculate(getPosition(), position)
       
     }
     public void go(int setpoint){

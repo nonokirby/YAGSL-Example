@@ -1,9 +1,10 @@
 package frc.robot.commands.shooter;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.RobotContainer;
 
-public class stop extends InstantCommand{
+public class stop extends Command{
     public stop(){
         addRequirements(RobotContainer.shooter);
     }

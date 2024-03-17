@@ -45,6 +45,15 @@ public class shooter extends SubsystemBase {
       mFeederR.set(feedSpeedR);    
     } 
 
+    public void intakeboth(double feedRate, double intakerate){
+      double intakeSpeed = feedRate * intake.power;
+      double feedSpeedL = feedRate * feederL.power;
+      double feedSpeedR = feedRate * feederR.power;
+      mIntake.set(intakeSpeed);
+      mFeederL.set(feedSpeedL);
+      mFeederR.set(feedSpeedR);    
+    } 
+
    /* public void periodic(){
         double flywheelSpeedL = RobotContainer.shooterXbox.getLeftTriggerAxis() * flywheelL.power;
         double flywheelSpeedR = RobotContainer.shooterXbox.getLeftTriggerAxis() * flywheelR.power;

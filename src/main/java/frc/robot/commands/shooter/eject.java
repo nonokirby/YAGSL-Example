@@ -1,19 +1,20 @@
 package frc.robot.commands.shooter;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.RobotContainer;
 
-public class shoot extends InstantCommand{
-    public shoot(){
+public class eject extends Command{
+    public eject(){
         addRequirements(RobotContainer.shooter);
     }
 
     public void execute() {
-        RobotContainer.shooter.flywheel(1);
+        RobotContainer.shooter.intakeboth(-1,-1);
     }
 
     public void end(boolean interrupted) {
-        RobotContainer.shooter.feed(1);
+        RobotContainer.shooter.intakeboth(0,0);
     }
     
 }
