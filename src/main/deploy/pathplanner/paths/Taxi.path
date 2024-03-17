@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.5509293901470684,
-        "y": 2.2834416840004854
+        "x": 3.9344907518643866,
+        "y": 7.608390712276921
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.630987604317551,
-        "y": 0.5269480809231892
+        "x": 6.014548966034869,
+        "y": 5.851897109199625
       },
       "isLocked": false,
       "linkedName": "Hallway Start"
     },
     {
       "anchor": {
-        "x": 2.7511687455807343,
-        "y": 2.570027482397308
+        "x": 0.5416846869729774,
+        "y": 7.608390712276921
       },
       "prevControl": {
-        "x": 3.3705638582448336,
-        "y": 1.5253760237250213
+        "x": 1.1610797996370767,
+        "y": 6.563739253604634
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 0.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -40,6 +40,9 @@ import frc.robot.subsystems.shooter;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
+import com.fasterxml.jackson.core.sym.Name;
+import com.pathplanner.lib.auto.NamedCommands;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -115,6 +118,10 @@ public class RobotContainer
     drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
+    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(.5).andThen(new feed().withTimeout(1)));
+    NamedCommands.registerCommand("Intake", new intake().withTimeout(3));
+    NamedCommands.registerCommand("Lower Note", new spit().withTimeout(.1));
+      
   }
 
   /**
@@ -131,7 +138,6 @@ public class RobotContainer
 
     new JoystickButton(driverXbox, 1).onTrue((new InstantCommand(drivebase::zeroGyro)));
     new JoystickButton(driverXbox, 3).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
-
     new JoystickButton(driverXbox, 2).whileTrue(Commands.deferredProxy(() -> drivebase.driveToPose(new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))));
     /*shooterXbox.rightTrigger().whileTrue(new spit());
     shooterXbox.rightBumper().whileTrue(new feed());
@@ -167,13 +173,13 @@ public class RobotContainer
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
+   *6
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Nothing");
+    return drivebase.getAutonomousCommand("Taxi Only");
   }
 
   public void setDriveMode()

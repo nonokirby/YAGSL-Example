@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7511687455807343,
-        "y": 2.570027482397308
+        "x": 0.5416846869729774,
+        "y": 7.608390712276921
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.2981959281306739,
-        "y": 2.5482328901355564
+        "x": 2.1595077424389078,
+        "y": 7.580656602754647
       },
       "isLocked": false,
       "linkedName": "Test Note"
     },
     {
       "anchor": {
-        "x": 0.5509293901470684,
-        "y": 2.2834416840004854
+        "x": 4.341257691524392,
+        "y": 7.608390712276921
       },
       "prevControl": {
-        "x": 2.6002998959677264,
-        "y": 2.308565256371524
+        "x": 3.352074451896651,
+        "y": 7.589901305928739
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Hallway Start"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.72833775146376,
+    "rotation": 0.8951737102110058,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": -89.18154453831154,
+    "rotation": 0.0,
     "velocity": 0
   },
   "useDefaultConstraints": true
