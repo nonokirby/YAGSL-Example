@@ -16,8 +16,5 @@ public class left extends Command{
     public void end(){
         RobotContainer.climber.setInd(0,0);
     }
-    public void initialize(){
-        RobotContainer.climber.setup();
-    }
     
 }

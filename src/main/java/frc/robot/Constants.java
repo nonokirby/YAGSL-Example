@@ -70,8 +70,7 @@ public final class Constants
     public static double Kp = 0;
     public static double Ki = 0;
     public static double Kd = 0;
-
-
+    public static double ConversionRate = 1024; //Div encoder value by this so 0 = bottom of climber & 1 = top
   }
   public static class climberR{
     public static CANSparkLowLevel.MotorType neo = MotorType.kBrushless;

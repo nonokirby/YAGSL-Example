@@ -16,8 +16,4 @@ public class down extends Command{
     public void end(){
         RobotContainer.climber.set(0);
     }
-    public void initialize(){
-        RobotContainer.climber.setup();
-    }
-    
 }
