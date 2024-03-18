@@ -114,6 +114,7 @@ public class Robot extends TimedRobot
   public void autonomousInit()
   {
     m_robotContainer.setMotorBrake(true);
+    RobotContainer.climber.zero();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -121,6 +122,7 @@ public class Robot extends TimedRobot
     {
       m_autonomousCommand.withTimeout(15.0).schedule();
     }
+    
   }
 
   /**
@@ -161,6 +163,7 @@ public class Robot extends TimedRobot
   {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
+    RobotContainer.climber.zero();
     try
     {
       new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve"));
@@ -176,6 +179,7 @@ public class Robot extends TimedRobot
   @Override
   public void testPeriodic()
   {
+    
   }
 
   /**

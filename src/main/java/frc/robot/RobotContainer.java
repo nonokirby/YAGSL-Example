@@ -62,7 +62,7 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
                                                                     
-  public SendableChooser<Command> autochooser  = new SendableChooser<Command>();
+  public SendableChooser<String> autochooser  = new SendableChooser<String>();
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //CommandJoystick driverController = new CommandJoystick(1);
@@ -128,9 +128,9 @@ public class RobotContainer
     NamedCommands.registerCommand("Intake", new intake().withTimeout(3));
     NamedCommands.registerCommand("Lower Note", new spit().withTimeout(.1));
 
-    autochooser.setDefaultOption("Do nothing", new PathPlannerAuto("Shoot Taxi Intake"));
-    autochooser.addOption("Shoot", new PathPlannerAuto("Shoot Taxi Intake"));
-    autochooser.addOption("Taxi", new PathPlannerAuto("Taxi Only"));
+    autochooser.setDefaultOption("Do nothing", new String("Nothing"));
+    autochooser.addOption("Shoot", new String("Shoot Taxi Intake"));
+    autochooser.addOption("Taxi", new String("Taxi Only"));
   }
 
   /**
@@ -188,7 +188,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Shoot Taxi Intake");
+    return drivebase.getAutonomousCommand(autochooser.getSelected());
   }
 
   public void setDriveMode()

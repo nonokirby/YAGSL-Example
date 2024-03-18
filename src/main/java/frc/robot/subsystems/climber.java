@@ -53,6 +53,13 @@ public class climber extends SubsystemBase{
       // // else{
         SmartDashboard.putNumber("LeftEncoder", encoderL.getPosition().getValueAsDouble());
         SmartDashboard.putNumber("RightEncoder", encoderR.getPosition().getValueAsDouble());
+        SmartDashboard.putNumber("NeoEncoderClimberLPos",mClimberL.getEncoder().getPosition());
+        SmartDashboard.putNumber("NeoEncoderClimberLVel",mClimberL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("NeoEncoderClimberRPos",mClimberR.getEncoder().getPosition());
+        SmartDashboard.putNumber("NeoEncoderClimberRVel",mClimberR.getEncoder().getVelocity());
+        
+        
+        SmartDashboard.putNumber()
         // SmartDashboard.setPersistent("LeftEncoder");
         // SmartDashboard.setPersistent("RightEncoder");
       // }
@@ -100,6 +107,8 @@ public class climber extends SubsystemBase{
      mClimberR.set(1);
      while (mClimberL.getEncoder().getVelocity() < 300);
     }
+    encoderL.setPosition(0);
+    encoderR.setPosition(0);
     }
 
     public void setInd(double input_speedL, double input_speedR){
