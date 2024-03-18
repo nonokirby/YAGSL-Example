@@ -57,9 +57,18 @@ public class climber extends SubsystemBase{
         SmartDashboard.putNumber("NeoEncoderClimberLVel",mClimberL.getEncoder().getVelocity());
         SmartDashboard.putNumber("NeoEncoderClimberRPos",mClimberR.getEncoder().getPosition());
         SmartDashboard.putNumber("NeoEncoderClimberRVel",mClimberR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("ControllerClimberLCurrent",mClimberL.getOutputCurrent());
+        SmartDashboard.putNumber("ControllerClimberRCurrent",mClimberR.getOutputCurrent());
+        SmartDashboard.putNumber("ControllerClimberLTemp",mClimberL.getMotorTemperature());
+        SmartDashboard.putNumber("ControllerClimberRTemp",mClimberR.getMotorTemperature());
+        SmartDashboard.putNumber("ControllerClimberLBusVoltage",mClimberL.getBusVoltage());
+        SmartDashboard.putNumber("ControllerClimberRBusVoltage",mClimberR.getBusVoltage());
+        SmartDashboard.putNumber("ControllerClimberLAppliedOutput",mClimberL.getAppliedOutput());
+        SmartDashboard.putNumber("ControllerClimberRAppliedOutput",mClimberR.getAppliedOutput());
         
         
-        SmartDashboard.putNumber()
+        
+        // SmartDashboard.putNumber()
         // SmartDashboard.setPersistent("LeftEncoder");
         // SmartDashboard.setPersistent("RightEncoder");
       // }

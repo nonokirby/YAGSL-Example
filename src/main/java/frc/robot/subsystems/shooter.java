@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.*;
@@ -60,7 +62,50 @@ public class shooter extends SubsystemBase {
         mFlywheelL.set(flywheelSpeedL);
         mFlywheelR.set(flywheelSpeedR);
       }*/
-    }
+      public void periodic(){
+        // FlywheelL
+        SmartDashboard.putNumber("Neo_Encoder_FlywheelL_Pos", mFlywheelL.getEncoder().getPosition());
+        SmartDashboard.putNumber("Neo_Encoder_FlywheelL_Vel", mFlywheelL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Controller_FlywheelL_Current", mFlywheelL.getOutputCurrent());
+        SmartDashboard.putNumber("Controller_FlywheelL_Temp", mFlywheelL.getMotorTemperature());
+        SmartDashboard.putNumber("Controller_FlywheelL_BusVoltage", mFlywheelL.getBusVoltage());
+        SmartDashboard.putNumber("Controller_FlywheelL_AppliedOutput", mFlywheelL.getAppliedOutput());
+
+        // FlywheelR
+        SmartDashboard.putNumber("Neo_Encoder_FlywheelR_Pos", mFlywheelR.getEncoder().getPosition());
+        SmartDashboard.putNumber("Neo_Encoder_FlywheelR_Vel", mFlywheelR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Controller_FlywheelR_Current", mFlywheelR.getOutputCurrent());
+        SmartDashboard.putNumber("Controller_FlywheelR_Temp", mFlywheelR.getMotorTemperature());
+        SmartDashboard.putNumber("Controller_FlywheelR_BusVoltage", mFlywheelR.getBusVoltage());
+        SmartDashboard.putNumber("Controller_FlywheelR_AppliedOutput", mFlywheelR.getAppliedOutput());
+
+        // mIntake
+        SmartDashboard.putNumber("Neo_Encoder_mIntake_Pos", mIntake.getEncoder().getPosition());
+        SmartDashboard.putNumber("Neo_Encoder_mIntake_Vel", mIntake.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Controller_mIntake_Current", mIntake.getOutputCurrent());
+        SmartDashboard.putNumber("Controller_mIntake_Temp", mIntake.getMotorTemperature());
+        SmartDashboard.putNumber("Controller_mIntake_BusVoltage", mIntake.getBusVoltage());
+        SmartDashboard.putNumber("Controller_mIntake_AppliedOutput", mIntake.getAppliedOutput());
+
+        // FeederL
+        SmartDashboard.putNumber("Neo_Encoder_FeederL_Pos", mFeederL.getEncoder().getPosition());
+        SmartDashboard.putNumber("Neo_Encoder_FeederL_Vel", mFeederL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Controller_FeederL_Current", mFeederL.getOutputCurrent());
+        SmartDashboard.putNumber("Controller_FeederL_Temp", mFeederL.getMotorTemperature());
+        SmartDashboard.putNumber("Controller_FeederL_BusVoltage", mFeederL.getBusVoltage());
+
+        // FeederR
+        SmartDashboard.putNumber("Neo_Encoder_FeederR_Pos", mFeederR.getEncoder().getPosition());
+        SmartDashboard.putNumber("Neo_Encoder_FeederR_Vel", mFeederR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Controller_FeederR_Current", mFeederR.getOutputCurrent());
+        SmartDashboard.putNumber("Controller_FeederR_Temp", mFeederR.getMotorTemperature());
+        SmartDashboard.putNumber("Controller_FeederR_BusVoltage", mFeederR.getBusVoltage());
+        SmartDashboard.putNumber("Controller_FeederR_AppliedOutput", mFeederR.getAppliedOutput());
+      }
+          
+        
+   }
+    
 
     
 
