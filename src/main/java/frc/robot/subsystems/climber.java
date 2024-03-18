@@ -10,7 +10,10 @@ import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.hal.AddressableLEDJNI;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableValue;
+import edu.wpi.first.networktables.StringTopic;
 import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -40,18 +43,38 @@ public class climber extends SubsystemBase{
   double speedL;
   double speedR;
     public void periodic(){
-      SmartDashboard.putNumber("leftencoder", encoderL.getPosition().getValueAsDouble());
-      SmartDashboard.putNumber("leftencoder", encoderL.getPosition().getValueAsDouble());
-
-  }
-    public void setup(){
-      mClimberL.clearFaults();
-      mClimberL.setIdleMode(IdleMode.kBrake);
-      mClimberL.setSmartCurrentLimit(climberL.current);
-      mClimberR.clearFaults();
-      mClimberR.setIdleMode(IdleMode.kBrake);
-      mClimberR.setSmartCurrentLimit(climberR.current);
-    }
+      if (SmartDashboard.getBoolean("First Setup", true)){
+        SmartDashboard.putBoolean("First Setup", false);
+  
+        mClimberL.clearFaults();
+        mClimberL.setIdleMode(IdleMode.kBrake);
+        mClimberL.setSmartCurrentLimit(climberL.current);
+        mClimberR.clearFaults();
+        mClimberR.setIdleMode(IdleMode.kBrake);
+        mClimberR.setSmartCurrentLimit(climberR.current);
+  
+        if (SmartDashboard.getNumber("LeftEncoder", -1442343243) == -1442343243){
+          SmartDashboard.putNumber("LeftEncoder", encoderL.getPosition().getValueAsDouble());
+        }
+        else{
+          encoderL.setPosition(SmartDashboard.getNumber("LeftEncoder", 0));
+        }
+        if (SmartDashboard.getNumber("RightEncoder", -1442343243) == -1442343243){
+          SmartDashboard.putNumber("RightEncoder", encoderR.getPosition().getValueAsDouble());
+        }
+        else{
+          encoderR.setPosition(SmartDashboard.getNumber("RightEncoder", 0));
+        }
+  
+        
+      }   
+      else{
+        SmartDashboard.putNumber("LeftEncoder", encoderL.getPosition().getValueAsDouble());
+        SmartDashboard.putNumber("RightEncoder", encoderR.getPosition().getValueAsDouble());
+        SmartDashboard.setPersistent("LeftEncoder");
+        SmartDashboard.setPersistent("RightEncoder");
+      }
+     }
     public void set(double input_speed){
       double speedL = input_speed * climberL.power;
       double speedR = input_speed * climberR.power;

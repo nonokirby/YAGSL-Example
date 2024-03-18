@@ -15,7 +15,7 @@ public class up extends InstantCommand{
     }
     public void end(){
     }
-    public void initialization(){
+    public void initialize(){
         RobotContainer.climber.setup();
     }
     
