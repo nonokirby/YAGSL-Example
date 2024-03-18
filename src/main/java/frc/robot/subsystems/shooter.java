@@ -70,6 +70,7 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_FlywheelL_Temp", mFlywheelL.getMotorTemperature());
         SmartDashboard.putNumber("Controller_FlywheelL_BusVoltage", mFlywheelL.getBusVoltage());
         SmartDashboard.putNumber("Controller_FlywheelL_AppliedOutput", mFlywheelL.getAppliedOutput());
+        SmartDashboard.putNumber("Controller_FlywheelL_DeviceId", mFlywheelL.getDeviceId());
 
         // FlywheelR
         SmartDashboard.putNumber("Neo_Encoder_FlywheelR_Pos", mFlywheelR.getEncoder().getPosition());
@@ -78,6 +79,7 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_FlywheelR_Temp", mFlywheelR.getMotorTemperature());
         SmartDashboard.putNumber("Controller_FlywheelR_BusVoltage", mFlywheelR.getBusVoltage());
         SmartDashboard.putNumber("Controller_FlywheelR_AppliedOutput", mFlywheelR.getAppliedOutput());
+        SmartDashboard.putNumber("Controller_FlywheelR_DeviceId", mFlywheelR.getDeviceId());
 
         // mIntake
         SmartDashboard.putNumber("Neo_Encoder_mIntake_Pos", mIntake.getEncoder().getPosition());
@@ -86,6 +88,7 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_mIntake_Temp", mIntake.getMotorTemperature());
         SmartDashboard.putNumber("Controller_mIntake_BusVoltage", mIntake.getBusVoltage());
         SmartDashboard.putNumber("Controller_mIntake_AppliedOutput", mIntake.getAppliedOutput());
+        SmartDashboard.putNumber("Controller_mIntake_DeviceId", mIntake.getDeviceId());
 
         // FeederL
         SmartDashboard.putNumber("Neo_Encoder_FeederL_Pos", mFeederL.getEncoder().getPosition());
@@ -93,6 +96,7 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_FeederL_Current", mFeederL.getOutputCurrent());
         SmartDashboard.putNumber("Controller_FeederL_Temp", mFeederL.getMotorTemperature());
         SmartDashboard.putNumber("Controller_FeederL_BusVoltage", mFeederL.getBusVoltage());
+        SmartDashboard.putNumber("Controller_FeederL_DeviceId", mFeederL.getDeviceId());
 
         // FeederR
         SmartDashboard.putNumber("Neo_Encoder_FeederR_Pos", mFeederR.getEncoder().getPosition());
@@ -101,6 +105,7 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_FeederR_Temp", mFeederR.getMotorTemperature());
         SmartDashboard.putNumber("Controller_FeederR_BusVoltage", mFeederR.getBusVoltage());
         SmartDashboard.putNumber("Controller_FeederR_AppliedOutput", mFeederR.getAppliedOutput());
+        SmartDashboard.putNumber("Controller_FeederR_DeviceId", mFeederR.getDeviceId());
       }
           
         
