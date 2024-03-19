@@ -55,9 +55,9 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
  */
 public class RobotContainer
 {
-  public final static climber climber = new climber();
-  public final static shooter shooter = new shooter();
-  public final static Logging Logging = new Logging();
+  public final static frc.robot.subsystems.climber climber = new frc.robot.subsystems.climber();
+  public final static frc.robot.subsystems.shooter shooter = new frc.robot.subsystems.shooter();
+  public final static frc.robot.subsystems.Logging Logging = new frc.robot.subsystems.Logging();
   public final static frc.robot.subsystems.flap flap = new frc.robot.subsystems.flap();
   
   // The robot's subsystems and commands are defined here...
