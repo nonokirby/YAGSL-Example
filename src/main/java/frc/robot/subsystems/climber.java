@@ -7,8 +7,8 @@ import com.revrobotics.CANSparkBase.IdleMode;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.Constants.climberL;
-import frc.robot.subsystems.Constants.climberR;
+import frc.robot.Constants.climberL;
+import frc.robot.Constants.climberR;
 
 public class climber extends SubsystemBase{
 
@@ -24,18 +24,14 @@ public class climber extends SubsystemBase{
   int rEncoderDistance;
   double speedL;
   double speedR;
-    public void periodic(){
-       if (SmartDashboard.getBoolean("First Setup", true)){
-        SmartDashboard.putBoolean("First Setup", false);
-  
+    public void setup(){
         mClimberL.clearFaults();
         mClimberL.setIdleMode(IdleMode.kBrake);
         mClimberL.setSmartCurrentLimit(climberL.current);
         mClimberR.clearFaults();
         mClimberR.setIdleMode(IdleMode.kBrake);
         mClimberR.setSmartCurrentLimit(climberR.current);
-        }         
-     }
+      }
     public void set(double input_speed){
       double speedL = input_speed * climberL.power;
       double speedR = input_speed * climberR.power;
@@ -79,11 +75,9 @@ public class climber extends SubsystemBase{
      attempts--;
      mClimberL.set(1);
      mClimberR.set(1);
-     while (mClimberL.getEncoder().getVelocity() < 300); 
+     while (mClimberL.getEncoder().getVelocity() < 1500); 
     }
-    encoderL.setPosition(0);
-    encoderR.setPosition(0);
-    }
+  }
 
     public void setInd(double input_speedL, double input_speedR){
       double speedL = input_speedL * climberL.power;

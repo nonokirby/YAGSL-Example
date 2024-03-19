@@ -5,8 +5,8 @@ import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.*;
 import frc.robot.subsystems.shooter;
-import frc.robot.subsystems.Constants.*;
 
 import java.lang.Math;
 
