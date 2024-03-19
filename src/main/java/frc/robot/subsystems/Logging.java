@@ -1,0 +1,141 @@
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.swervedrive.SwerveSubsystem;
+
+public class Logging extends SubsystemBase{
+    private climber climber;
+    private shooter shooter;
+    private flap flap;
+    public void start(){}
+    public void periodic(){
+      
+      // LeftEncoder
+      SmartDashboard.putNumber("/Climber/LeftEncoder/Position", climber.encoderL.getPosition().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/Velocity", climber.encoderL.getVelocity().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/DeviceID", climber.encoderL.getDeviceID());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/SupplyVoltage", climber.encoderL.getSupplyVoltage().getValueAsDouble());
+      SmartDashboard.putString("/Climber/LeftEncoder/Version", climber.encoderL.getVersion().toString());
+      SmartDashboard.putString("/Climber/LeftEncoder/FaultField", climber.encoderL.getFaultField().toString());
+      // RightEncoder
+      SmartDashboard.putNumber("/Climber/RightEncoder/Position", climber.encoderR.getPosition().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/RightEncoder/Velocity", climber.encoderR.getVelocity().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/RightEncoder/DeviceID", climber.encoderR.getDeviceID());
+      SmartDashboard.putNumber("/Climber/RightEncoder/SupplyVoltage", climber.encoderR.getSupplyVoltage().getValueAsDouble());
+      SmartDashboard.putString("/Climber/RightEncoder/Version", climber.encoderR.getVersion().toString());
+      SmartDashboard.putString("/Climber/RightEncoder/FaultField", climber.encoderR.getFaultField().toString());
+      // ClimberL
+      SmartDashboard.putNumber("/Climber/ClimberL/Position", climber.mClimberL.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Climber/ClimberL/Velocity", climber.mClimberL.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Climber/ClimberL/Temperature", climber.mClimberL.getMotorTemperature());
+      SmartDashboard.putNumber("/Climber/ClimberL/Current", climber.mClimberL.getOutputCurrent());
+      SmartDashboard.putNumber("/Climber/ClimberL/BusVoltage", climber.mClimberL.getBusVoltage());
+      SmartDashboard.putNumber("/Climber/ClimberL/AppliedOutput", climber.mClimberL.getAppliedOutput());
+      SmartDashboard.putNumber("/Climber/ClimberL/Id", climber.mClimberL.getDeviceId());
+      SmartDashboard.putNumber("/Climber/ClimberL/Faults", climber.mClimberL.getFaults());
+      SmartDashboard.putString("/Climber/ClimberL/Mode", climber.mClimberL.getIdleMode().toString());
+      SmartDashboard.putString("/Climber/ClimberL/FirmwareString", climber.mClimberL.getFirmwareString());
+      SmartDashboard.putBoolean("/Climber/ClimberL/Inverted", climber.mClimberL.getInverted());
+      SmartDashboard.putString("/Climber/ClimberL/SerialNumber", climber.mClimberL.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Climber/ClimberL/VoltageCompensationNominalVoltage", climber.mClimberL.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Climber/ClimberL/MotorType", climber.mClimberL.getMotorType().toString());
+      SmartDashboard.putNumber("/Climber/ClimberL/MotorOutput", climber.mClimberL.get());
+      // ClimberR
+      SmartDashboard.putNumber("/Climber/ClimberR/Position", climber.mClimberR.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Climber/ClimberR/Velocity", climber.mClimberR.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Climber/ClimberR/Temperature", climber.mClimberR.getMotorTemperature());
+      SmartDashboard.putNumber("/Climber/ClimberR/Current", climber.mClimberR.getOutputCurrent());
+      SmartDashboard.putNumber("/Climber/ClimberR/BusVoltage", climber.mClimberR.getBusVoltage());
+      SmartDashboard.putNumber("/Climber/ClimberR/AppliedOutput", climber.mClimberR.getAppliedOutput());
+      SmartDashboard.putNumber("/Climber/ClimberR/Id", climber.mClimberR.getDeviceId());
+      SmartDashboard.putNumber("/Climber/ClimberR/Faults", climber.mClimberR.getFaults());
+      SmartDashboard.putString("/Climber/ClimberR/Mode", climber.mClimberR.getIdleMode().toString());
+      SmartDashboard.putString("/Climber/ClimberR/FirmwareString", climber.mClimberR.getFirmwareString());
+      SmartDashboard.putBoolean("/Climber/ClimberR/Inverted", climber.mClimberR.getInverted());
+      SmartDashboard.putString("/Climber/ClimberR/SerialNumber", climber.mClimberR.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Climber/ClimberR/VoltageCompensationNominalVoltage", climber.mClimberR.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Climber/ClimberR/MotorType", climber.mClimberR.getMotorType().toString());
+      SmartDashboard.putNumber("/Climber/ClimberR/MotorOutput", climber.mClimberR.get());
+      // FlywheelL
+      SmartDashboard.putNumber("/Shooter/FeederL/Position", shooter.mFeederL.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Shooter/FeederL/Velocity", shooter.mFeederL.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Shooter/FeederL/Current", shooter.mFeederL.getOutputCurrent());
+      SmartDashboard.putNumber("/Shooter/FeederL/Temperature", shooter.mFeederL.getMotorTemperature());
+      SmartDashboard.putNumber("/Shooter/FeederL/BusVoltage", shooter.mFeederL.getBusVoltage());
+      SmartDashboard.putNumber("/Shooter/FeederL/AppliedOutput", shooter.mFeederL.getAppliedOutput());
+      SmartDashboard.putNumber("/Shooter/FeederL/DeviceId", shooter.mFeederL.getDeviceId());
+      SmartDashboard.putNumber("/Shooter/FeederL/Faults", shooter.mFeederL.getFaults());
+      SmartDashboard.putNumber("/Shooter/FeederL/Get", shooter.mFeederL.get());
+      SmartDashboard.putString("/Shooter/FeederL/FirmwareString", shooter.mFeederL.getFirmwareString());
+      SmartDashboard.putString("/Shooter/FeederL/IdleMode", shooter.mFeederL.getIdleMode().toString());
+      SmartDashboard.putString("/Shooter/FeederL/SerialNumber", shooter.mFeederL.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Shooter/FeederL/StickyFaults", shooter.mFeederL.getStickyFaults());
+      SmartDashboard.putNumber("/Shooter/FeederL/VoltageCompensationNominalVoltage", shooter.mFeederL.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Shooter/FeederL/MotorType", shooter.mFeederL.getMotorType().toString());
+      // FeederR
+      SmartDashboard.putNumber("/Shooter/FeederR/Position", shooter.mFeederR.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Shooter/FeederR/Velocity", shooter.mFeederR.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Shooter/FeederR/Current", shooter.mFeederR.getOutputCurrent());
+      SmartDashboard.putNumber("/Shooter/FeederR/Temperature", shooter.mFeederR.getMotorTemperature());
+      SmartDashboard.putNumber("/Shooter/FeederR/BusVoltage", shooter.mFeederR.getBusVoltage());
+      SmartDashboard.putNumber("/Shooter/FeederR/AppliedOutput", shooter.mFeederR.getAppliedOutput());
+      SmartDashboard.putNumber("/Shooter/FeederR/DeviceId", shooter.mFeederR.getDeviceId());
+      SmartDashboard.putNumber("/Shooter/FeederR/Faults", shooter.mFeederR.getFaults());
+      SmartDashboard.putNumber("/Shooter/FeederR/Get", shooter.mFeederR.get());
+      SmartDashboard.putString("/Shooter/FeederR/FirmwareString", shooter.mFeederR.getFirmwareString());
+      SmartDashboard.putString("/Shooter/FeederR/IdleMode", shooter.mFeederR.getIdleMode().toString());
+      SmartDashboard.putString("/Shooter/FeederR/SerialNumber", shooter.mFeederR.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Shooter/FeederR/StickyFaults", shooter.mFeederR.getStickyFaults());
+      SmartDashboard.putNumber("/Shooter/FeederR/VoltageCompensationNominalVoltage", shooter.mFeederR.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Shooter/FeederR/MotorType", shooter.mFeederR.getMotorType().toString());
+      // Intake
+      SmartDashboard.putNumber("/Shooter/Intake/Position", shooter.mIntake.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Shooter/Intake/Velocity", shooter.mIntake.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Shooter/Intake/Current", shooter.mIntake.getOutputCurrent());
+      SmartDashboard.putNumber("/Shooter/Intake/Temperature", shooter.mIntake.getMotorTemperature());
+      SmartDashboard.putNumber("/Shooter/Intake/BusVoltage", shooter.mIntake.getBusVoltage());
+      SmartDashboard.putNumber("/Shooter/Intake/AppliedOutput", shooter.mIntake.getAppliedOutput());
+      SmartDashboard.putNumber("/Shooter/Intake/DeviceId", shooter.mIntake.getDeviceId());
+      SmartDashboard.putNumber("/Shooter/Intake/Faults", shooter.mIntake.getFaults());
+      SmartDashboard.putNumber("/Shooter/Intake/Get", shooter.mIntake.get());
+      SmartDashboard.putString("/Shooter/Intake/FirmwareString", shooter.mIntake.getFirmwareString());
+      SmartDashboard.putString("/Shooter/Intake/IdleMode", shooter.mIntake.getIdleMode().toString());
+      SmartDashboard.putString("/Shooter/Intake/SerialNumber", shooter.mIntake.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Shooter/Intake/StickyFaults", shooter.mIntake.getStickyFaults());
+      SmartDashboard.putNumber("/Shooter/Intake/VoltageCompensationNominalVoltage", shooter.mIntake.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Shooter/Intake/MotorType", shooter.mIntake.getMotorType().toString());
+      // FlywheelR
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Position", shooter.mFlywheelR.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Velocity", shooter.mFlywheelR.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Current", shooter.mFlywheelR.getOutputCurrent());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Temperature", shooter.mFlywheelR.getMotorTemperature());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/BusVoltage", shooter.mFlywheelR.getBusVoltage());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/AppliedOutput", shooter.mFlywheelR.getAppliedOutput());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/DeviceId", shooter.mFlywheelR.getDeviceId());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Faults", shooter.mFlywheelR.getFaults());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/Get", shooter.mFlywheelR.get());
+      SmartDashboard.putString("/Shooter/FlywheelR/FirmwareString", shooter.mFlywheelR.getFirmwareString());
+      SmartDashboard.putString("/Shooter/FlywheelR/IdleMode", shooter.mFlywheelR.getIdleMode().toString());
+      SmartDashboard.putString("/Shooter/FlywheelR/SerialNumber", shooter.mFlywheelR.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/StickyFaults", shooter.mFlywheelR.getStickyFaults());
+      SmartDashboard.putNumber("/Shooter/FlywheelR/VoltageCompensationNominalVoltage", shooter.mFlywheelR.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Shooter/FlywheelR/MotorType", shooter.mFlywheelR.getMotorType().toString());
+      // FlywheelL
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Position", shooter.mFlywheelL.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Velocity", shooter.mFlywheelL.getEncoder().getVelocity());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Current", shooter.mFlywheelL.getOutputCurrent());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Temperature", shooter.mFlywheelL.getMotorTemperature());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/BusVoltage", shooter.mFlywheelL.getBusVoltage());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/AppliedOutput", shooter.mFlywheelL.getAppliedOutput());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/DeviceId", shooter.mFlywheelL.getDeviceId());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Faults", shooter.mFlywheelL.getFaults());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/Get", shooter.mFlywheelL.get());
+      SmartDashboard.putString("/Shooter/FlywheelL/FirmwareString", shooter.mFlywheelL.getFirmwareString());
+      SmartDashboard.putString("/Shooter/FlywheelL/IdleMode", shooter.mFlywheelL.getIdleMode().toString());
+      SmartDashboard.putString("/Shooter/FlywheelL/SerialNumber", shooter.mFlywheelL.getSerialNumber().toString());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/StickyFaults", shooter.mFlywheelL.getStickyFaults());
+      SmartDashboard.putNumber("/Shooter/FlywheelL/VoltageCompensationNominalVoltage", shooter.mFlywheelL.getVoltageCompensationNominalVoltage());
+      SmartDashboard.putString("/Shooter/FlywheelL/MotorType", shooter.mFlywheelL.getMotorType().toString());
+    }
+}

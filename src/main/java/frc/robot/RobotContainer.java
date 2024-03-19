@@ -24,7 +24,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.climber.down;
 import frc.robot.commands.climber.left;
 import frc.robot.commands.climber.right;
@@ -37,8 +36,10 @@ import frc.robot.commands.shooter.flywheel;
 import frc.robot.commands.shooter.intake;
 import frc.robot.commands.shooter.spit;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
+import frc.robot.subsystems.Logging;
 import frc.robot.subsystems.climber;
 import frc.robot.subsystems.shooter;
+import frc.robot.subsystems.Constants.OperatorConstants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
@@ -56,6 +57,7 @@ public class RobotContainer
 {
   public final static climber climber = new climber();
   public final static shooter shooter = new shooter();
+  public final static Logging Logging = new Logging();
   public final static frc.robot.subsystems.flap flap = new frc.robot.subsystems.flap();
   
   // The robot's subsystems and commands are defined here...
