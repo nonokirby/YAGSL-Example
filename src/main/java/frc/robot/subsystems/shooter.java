@@ -56,7 +56,7 @@ public class shooter extends SubsystemBase {
       mFeederR.set(feedSpeedR);    
     } 
     public void setup(){
-      
+
     }
 
    /* public void periodic(){
@@ -67,90 +67,89 @@ public class shooter extends SubsystemBase {
       }*/
       public void periodic(){
         // FlywheelL
-        SmartDashboard.putNumber("Neo_Encoder_FeederL_Pos", mFeederL.getEncoder().getPosition());
-        SmartDashboard.putNumber("Neo_Encoder_FeederL_Vel", mFeederL.getEncoder().getVelocity());
-        SmartDashboard.putNumber("Controller_FeederL_Current", mFeederL.getOutputCurrent());
-        SmartDashboard.putNumber("Controller_FeederL_Temp", mFeederL.getMotorTemperature());
-        SmartDashboard.putNumber("Controller_FeederL_BusVoltage", mFeederL.getBusVoltage());
-        SmartDashboard.putNumber("Controller_FeederL_AppliedOutput", mFeederL.getAppliedOutput());
-        SmartDashboard.putNumber("Controller_FeederL_DeviceId", mFeederL.getDeviceId());
-        SmartDashboard.putNumber("Controller_FeederL_Faults", mFeederL.getFaults());
-        SmartDashboard.putNumber("Controller_FeederL_Get", mFeederL.get());
-        SmartDashboard.putString("Controller_FeederL_FirmwareString", mFeederL.getFirmwareString());
-        SmartDashboard.putString("Controller_FeederL_IdleMode", mFeederL.getIdleMode().toString());
-        SmartDashboard.putString("Controller_FeederL_SerialNumber", mFeederL.getSerialNumber().toString());
-        SmartDashboard.putNumber("Controller_FeederL_StickyFaults", mFeederL.getStickyFaults());
-        SmartDashboard.putNumber("Controller_FeederL_VoltageCompensationNominalVoltage", mFeederL.getVoltageCompensationNominalVoltage());
-        SmartDashboard.putString("Controller_FeederL_MotorType", mFeederL.getMotorType().toString());
+        SmartDashboard.putNumber("/Shooter/FeederL/Position", mFeederL.getEncoder().getPosition());
+        SmartDashboard.putNumber("/Shooter/FeederL/Velocity", mFeederL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("/Shooter/FeederL/Current", mFeederL.getOutputCurrent());
+        SmartDashboard.putNumber("/Shooter/FeederL/Temperature", mFeederL.getMotorTemperature());
+        SmartDashboard.putNumber("/Shooter/FeederL/BusVoltage", mFeederL.getBusVoltage());
+        SmartDashboard.putNumber("/Shooter/FeederL/AppliedOutput", mFeederL.getAppliedOutput());
+        SmartDashboard.putNumber("/Shooter/FeederL/DeviceId", mFeederL.getDeviceId());
+        SmartDashboard.putNumber("/Shooter/FeederL/Faults", mFeederL.getFaults());
+        SmartDashboard.putNumber("/Shooter/FeederL/Get", mFeederL.get());
+        SmartDashboard.putString("/Shooter/FeederL/FirmwareString", mFeederL.getFirmwareString());
+        SmartDashboard.putString("/Shooter/FeederL/IdleMode", mFeederL.getIdleMode().toString());
+        SmartDashboard.putString("/Shooter/FeederL/SerialNumber", mFeederL.getSerialNumber().toString());
+        SmartDashboard.putNumber("/Shooter/FeederL/StickyFaults", mFeederL.getStickyFaults());
+        SmartDashboard.putNumber("/Shooter/FeederL/VoltageCompensationNominalVoltage", mFeederL.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("/Shooter/FeederL/MotorType", mFeederL.getMotorType().toString());
 
         // FeederR
-        SmartDashboard.putNumber("Neo_Encoder_FeederR_Pos", mFeederR.getEncoder().getPosition());
-        SmartDashboard.putNumber("Neo_Encoder_FeederR_Vel", mFeederR.getEncoder().getVelocity());
-        SmartDashboard.putNumber("Controller_FeederR_Current", mFeederR.getOutputCurrent());
-        SmartDashboard.putNumber("Controller_FeederR_Temp", mFeederR.getMotorTemperature());
-        SmartDashboard.putNumber("Controller_FeederR_BusVoltage", mFeederR.getBusVoltage());
-        SmartDashboard.putNumber("Controller_FeederR_AppliedOutput", mFeederR.getAppliedOutput());
-        SmartDashboard.putNumber("Controller_FeederR_DeviceId", mFeederR.getDeviceId());
-        SmartDashboard.putNumber("Controller_FeederR_Faults", mFeederR.getFaults());
-        SmartDashboard.putNumber("Controller_FeederR_Get", mFeederR.get());
-        SmartDashboard.putString("Controller_FeederR_FirmwareString", mFeederR.getFirmwareString());
-        SmartDashboard.putString("Controller_FeederR_IdleMode", mFeederR.getIdleMode().toString());
-        SmartDashboard.putString("Controller_FeederR_SerialNumber", mFeederR.getSerialNumber().toString());
-        SmartDashboard.putNumber("Controller_FeederR_StickyFaults", mFeederR.getStickyFaults());
-        SmartDashboard.putNumber("Controller_FeederR_VoltageCompensationNominalVoltage", mFeederR.getVoltageCompensationNominalVoltage());
-        SmartDashboard.putString("Controller_FeederR_MotorType", mFeederR.getMotorType().toString());
+        SmartDashboard.putNumber("/Shooter/FeederR/Position", mFeederR.getEncoder().getPosition());
+        SmartDashboard.putNumber("/Shooter/FeederR/Velocity", mFeederR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("/Shooter/FeederR/Current", mFeederR.getOutputCurrent());
+        SmartDashboard.putNumber("/Shooter/FeederR/Temperature", mFeederR.getMotorTemperature());
+        SmartDashboard.putNumber("/Shooter/FeederR/BusVoltage", mFeederR.getBusVoltage());
+        SmartDashboard.putNumber("/Shooter/FeederR/AppliedOutput", mFeederR.getAppliedOutput());
+        SmartDashboard.putNumber("/Shooter/FeederR/DeviceId", mFeederR.getDeviceId());
+        SmartDashboard.putNumber("/Shooter/FeederR/Faults", mFeederR.getFaults());
+        SmartDashboard.putNumber("/Shooter/FeederR/Get", mFeederR.get());
+        SmartDashboard.putString("/Shooter/FeederR/FirmwareString", mFeederR.getFirmwareString());
+        SmartDashboard.putString("/Shooter/FeederR/IdleMode", mFeederR.getIdleMode().toString());
+        SmartDashboard.putString("/Shooter/FeederR/SerialNumber", mFeederR.getSerialNumber().toString());
+        SmartDashboard.putNumber("/Shooter/FeederR/StickyFaults", mFeederR.getStickyFaults());
+        SmartDashboard.putNumber("/Shooter/FeederR/VoltageCompensationNominalVoltage", mFeederR.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("/Shooter/FeederR/MotorType", mFeederR.getMotorType().toString());
 
         // Intake
-        SmartDashboard.putNumber("Neo_Encoder_Intake_Pos", mIntake.getEncoder().getPosition());
-        SmartDashboard.putNumber("Neo_Encoder_Intake_Vel", mIntake.getEncoder().getVelocity());
-        SmartDashboard.putNumber("Controller_Intake_Current", mIntake.getOutputCurrent());
-        SmartDashboard.putNumber("Controller_Intake_Temp", mIntake.getMotorTemperature());
-        SmartDashboard.putNumber("Controller_Intake_BusVoltage", mIntake.getBusVoltage());
-        SmartDashboard.putNumber("Controller_Intake_AppliedOutput", mIntake.getAppliedOutput());
-        SmartDashboard.putNumber("Controller_Intake_DeviceId", mIntake.getDeviceId());
-        SmartDashboard.putNumber("Controller_Intake_Faults", mIntake.getFaults());
-        SmartDashboard.putNumber("Controller_Intake_Get", mIntake.get());
-        SmartDashboard.putString("Controller_Intake_FirmwareString", mIntake.getFirmwareString());
-        SmartDashboard.putString("Controller_Intake_IdleMode", mIntake.getIdleMode().toString());
-        SmartDashboard.putString("Controller_Intake_SerialNumber", mIntake.getSerialNumber().toString());
-        SmartDashboard.putNumber("Controller_Intake_StickyFaults", mIntake.getStickyFaults());
-        SmartDashboard.putNumber("Controller_Intake_VoltageCompensationNominalVoltage", mIntake.getVoltageCompensationNominalVoltage());
-        SmartDashboard.putString("Controller_Intake_MotorType", mIntake.getMotorType().toString());
+        SmartDashboard.putNumber("/Shooter/Intake/Position", mIntake.getEncoder().getPosition());
+        SmartDashboard.putNumber("/Shooter/Intake/Velocity", mIntake.getEncoder().getVelocity());
+        SmartDashboard.putNumber("/Shooter/Intake/Current", mIntake.getOutputCurrent());
+        SmartDashboard.putNumber("/Shooter/Intake/Temperature", mIntake.getMotorTemperature());
+        SmartDashboard.putNumber("/Shooter/Intake/BusVoltage", mIntake.getBusVoltage());
+        SmartDashboard.putNumber("/Shooter/Intake/AppliedOutput", mIntake.getAppliedOutput());
+        SmartDashboard.putNumber("/Shooter/Intake/DeviceId", mIntake.getDeviceId());
+        SmartDashboard.putNumber("/Shooter/Intake/Faults", mIntake.getFaults());
+        SmartDashboard.putNumber("/Shooter/Intake/Get", mIntake.get());
+        SmartDashboard.putString("/Shooter/Intake/FirmwareString", mIntake.getFirmwareString());
+        SmartDashboard.putString("/Shooter/Intake/IdleMode", mIntake.getIdleMode().toString());
+        SmartDashboard.putString("/Shooter/Intake/SerialNumber", mIntake.getSerialNumber().toString());
+        SmartDashboard.putNumber("/Shooter/Intake/StickyFaults", mIntake.getStickyFaults());
+        SmartDashboard.putNumber("/Shooter/Intake/VoltageCompensationNominalVoltage", mIntake.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("/Shooter/Intake/MotorType", mIntake.getMotorType().toString());
 
         // FlywheelR
-        SmartDashboard.putNumber("Neo_Encoder_FlywheelR_Pos", mFlywheelR.getEncoder().getPosition());
-        SmartDashboard.putNumber("Neo_Encoder_FlywheelR_Vel", mFlywheelR.getEncoder().getVelocity());
-        SmartDashboard.putNumber("Controller_FlywheelR_Current", mFlywheelR.getOutputCurrent());
-        SmartDashboard.putNumber("Controller_FlywheelR_Temp", mFlywheelR.getMotorTemperature());
-        SmartDashboard.putNumber("Controller_FlywheelR_BusVoltage", mFlywheelR.getBusVoltage());
-        SmartDashboard.putNumber("Controller_FlywheelR_AppliedOutput", mFlywheelR.getAppliedOutput());
-        SmartDashboard.putNumber("Controller_FlywheelR_DeviceId", mFlywheelR.getDeviceId());
-        SmartDashboard.putNumber("Controller_FlywheelR_Faults", mFlywheelR.getFaults());
-        SmartDashboard.putNumber("Controller_FlywheelR_Get", mFlywheelR.get());
-        SmartDashboard.putString("Controller_FlywheelR_FirmwareString", mFlywheelR.getFirmwareString());
-        SmartDashboard.putString("Controller_FlywheelR_IdleMode", mFlywheelR.getIdleMode().toString());
-        SmartDashboard.putString("Controller_FlywheelR_SerialNumber", mFlywheelR.getSerialNumber().toString());
-        SmartDashboard.putNumber("Controller_FlywheelR_StickyFaults", mFlywheelR.getStickyFaults());
-        SmartDashboard.putNumber("Controller_FlywheelR_VoltageCompensationNominalVoltage", mFlywheelR.getVoltageCompensationNominalVoltage());
-        SmartDashboard.putString("Controller_FlywheelR_MotorType", mFlywheelR.getMotorType().toString());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Position", mFlywheelR.getEncoder().getPosition());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Velocity", mFlywheelR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Current", mFlywheelR.getOutputCurrent());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Temperature", mFlywheelR.getMotorTemperature());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/BusVoltage", mFlywheelR.getBusVoltage());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/AppliedOutput", mFlywheelR.getAppliedOutput());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/DeviceId", mFlywheelR.getDeviceId());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Faults", mFlywheelR.getFaults());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/Get", mFlywheelR.get());
+        SmartDashboard.putString("/Shooter/FlywheelR/FirmwareString", mFlywheelR.getFirmwareString());
+        SmartDashboard.putString("/Shooter/FlywheelR/IdleMode", mFlywheelR.getIdleMode().toString());
+        SmartDashboard.putString("/Shooter/FlywheelR/SerialNumber", mFlywheelR.getSerialNumber().toString());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/StickyFaults", mFlywheelR.getStickyFaults());
+        SmartDashboard.putNumber("/Shooter/FlywheelR/VoltageCompensationNominalVoltage", mFlywheelR.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("/Shooter/FlywheelR/MotorType", mFlywheelR.getMotorType().toString());
 
-        
         // FlywheelL
-        SmartDashboard.putNumber("Neo_Encoder_FlywheelL_Pos", mFlywheelL.getEncoder().getPosition());
-        SmartDashboard.putNumber("Neo_Encoder_FlywheelL_Vel", mFlywheelL.getEncoder().getVelocity());
-        SmartDashboard.putNumber("Controller_FlywheelL_Current", mFlywheelL.getOutputCurrent());
-        SmartDashboard.putNumber("Controller_FlywheelL_Temp", mFlywheelL.getMotorTemperature());
-        SmartDashboard.putNumber("Controller_FlywheelL_BusVoltage", mFlywheelL.getBusVoltage());
-        SmartDashboard.putNumber("Controller_FlywheelL_AppliedOutput", mFlywheelL.getAppliedOutput());
-        SmartDashboard.putNumber("Controller_FlywheelL_DeviceId", mFlywheelL.getDeviceId());
-        SmartDashboard.putNumber("Controller_FlywheelL_Faults", mFlywheelL.getFaults());
-        SmartDashboard.putNumber("Controller_FlywheelL_Get", mFlywheelL.get());
-        SmartDashboard.putString("Controller_FlywheelL_FirmwareString", mFlywheelL.getFirmwareString());
-        SmartDashboard.putString("Controller_FlywheelL_IdleMode", mFlywheelL.getIdleMode().toString());
-        SmartDashboard.putString("Controller_FlywheelL_SerialNumber", mFlywheelL.getSerialNumber().toString());
-        SmartDashboard.putNumber("Controller_FlywheelL_StickyFaults", mFlywheelL.getStickyFaults());
-        SmartDashboard.putNumber("Controller_FlywheelL_VoltageCompensationNominalVoltage", mFlywheelL.getVoltageCompensationNominalVoltage());
-        SmartDashboard.putString("Controller_FlywheelL_MotorType", mFlywheelL.getMotorType().toString());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Position", mFlywheelL.getEncoder().getPosition());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Velocity", mFlywheelL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Current", mFlywheelL.getOutputCurrent());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Temperature", mFlywheelL.getMotorTemperature());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/BusVoltage", mFlywheelL.getBusVoltage());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/AppliedOutput", mFlywheelL.getAppliedOutput());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/DeviceId", mFlywheelL.getDeviceId());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Faults", mFlywheelL.getFaults());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/Get", mFlywheelL.get());
+        SmartDashboard.putString("/Shooter/FlywheelL/FirmwareString", mFlywheelL.getFirmwareString());
+        SmartDashboard.putString("/Shooter/FlywheelL/IdleMode", mFlywheelL.getIdleMode().toString());
+        SmartDashboard.putString("/Shooter/FlywheelL/SerialNumber", mFlywheelL.getSerialNumber().toString());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/StickyFaults", mFlywheelL.getStickyFaults());
+        SmartDashboard.putNumber("/Shooter/FlywheelL/VoltageCompensationNominalVoltage", mFlywheelL.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("/Shooter/FlywheelL/MotorType", mFlywheelL.getMotorType().toString());
       }
           
         
