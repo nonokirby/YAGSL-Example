@@ -117,6 +117,9 @@
     "Persistent Values": {
       "open": false
     },
+    "Retained Values": {
+      "open": false
+    },
     "transitory": {
       "PathPlanner": {
         "double[]##v_/PathPlanner/activePath": {

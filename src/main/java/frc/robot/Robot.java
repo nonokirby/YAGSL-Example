@@ -146,7 +146,9 @@ public class Robot extends TimedRobot
     }
     m_robotContainer.setDriveMode();
     m_robotContainer.setMotorBrake(true);
+    RobotContainer.shooter.setup();
     RobotContainer.climber.zero();
+
   }
 
   /**

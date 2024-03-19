@@ -126,21 +126,23 @@ public class climber extends SubsystemBase{
       
     }
 
-    //basically rams the hook into itself repeatedly to determine the zero position
+    
+    //basically ram the climber into itself until it stops repeatedly to determine zero point for cancoders
+    //somewhat like a prusa 3d printer
     public void zero(){
-      int attempts = 5;
-      while (!(attempts==5)) {
+      int attempts = 3; 
+      while (!(attempts==0)) {
         mClimberL.set(-1);
         mClimberR.set(-1);
         boolean LeftZero = false;
         boolean RightZero = false;
       while (!LeftZero || !RightZero){
-      if (mClimberL.getEncoder().getVelocity() < 10){
+      if (mClimberL.getEncoder().getVelocity() < 10){ 
         encoderL.setPosition(0);
         mClimberL.set(0);
         LeftZero = true;
       }
-      if (mClimberR.getEncoder().getVelocity() < 10){
+      if (mClimberR.getEncoder().getVelocity() < 10){ 
         encoderR.setPosition(0);
         mClimberR.set(0);
         RightZero = true;
@@ -149,7 +151,7 @@ public class climber extends SubsystemBase{
      attempts--;
      mClimberL.set(1);
      mClimberR.set(1);
-     while (mClimberL.getEncoder().getVelocity() < 300);
+     while (mClimberL.getEncoder().getVelocity() < 300); 
     }
     encoderL.setPosition(0);
     encoderR.setPosition(0);
