@@ -64,8 +64,6 @@ public class Robot extends TimedRobot
     disabledTimer = new Timer();
     DataLogManager.start();
     DriverStation.startDataLog(DataLogManager.getLog());
-    
-
   }
 
   /**
@@ -148,6 +146,7 @@ public class Robot extends TimedRobot
     }
     m_robotContainer.setDriveMode();
     m_robotContainer.setMotorBrake(true);
+    RobotContainer.climber.zero();
   }
 
   /**

@@ -53,20 +53,53 @@ public class climber extends SubsystemBase{
       // // else{
         SmartDashboard.putNumber("LeftEncoder", encoderL.getPosition().getValueAsDouble());
         SmartDashboard.putNumber("RightEncoder", encoderR.getPosition().getValueAsDouble());
+        SmartDashboard.putNumber("LeftEncoderVelocity", encoderL.getVelocity().getValueAsDouble());
+        SmartDashboard.putNumber("RightEncoderVelocity", encoderR.getVelocity().getValueAsDouble());
+        SmartDashboard.putNumber("LeftEncoderDeviceID", encoderL.getDeviceID());
+        SmartDashboard.putNumber("RightEncoderDeviceID", encoderR.getDeviceID());
+        SmartDashboard.putNumber("LeftEncoderSupplyVoltage", encoderL.getSupplyVoltage().getValueAsDouble());
+        SmartDashboard.putNumber("RightEncoderSupplyVoltage", encoderR.getSupplyVoltage().getValueAsDouble());
+        SmartDashboard.putString("LeftEncoderVersion", encoderL.getVersion().toString());
+        SmartDashboard.putString("RightEncoderVersion", encoderR.getVersion().toString());
+        SmartDashboard.putString("LeftEncoderFaultField", encoderL.getFaultField().toString());
+        SmartDashboard.putString("RightEncoderFaultField", encoderR.getFaultField().toString());
 
-        SmartDashboard.putNumber("NeoEncoderClimberLPos", mClimberL.getEncoder().getPosition());
-        SmartDashboard.putNumber("NeoEncoderClimberLVel", mClimberL.getEncoder().getVelocity());
-        SmartDashboard.putNumber("NeoEncoderClimberRPos", mClimberR.getEncoder().getPosition());
-        SmartDashboard.putNumber("NeoEncoderClimberRVel", mClimberR.getEncoder().getVelocity());
+
+        SmartDashboard.putNumber("NeoClimberLPos", mClimberL.getEncoder().getPosition());
+        SmartDashboard.putNumber("NeoClimberLVel", mClimberL.getEncoder().getVelocity());
+        SmartDashboard.putNumber("NeoClimberRPos", mClimberR.getEncoder().getPosition());
+        SmartDashboard.putNumber("NeoClimberRVel", mClimberR.getEncoder().getVelocity());
+        SmartDashboard.putNumber("NeoClimberLTemp", mClimberL.getMotorTemperature());
+        SmartDashboard.putNumber("NeoClimberRTemp", mClimberR.getMotorTemperature());
 
         SmartDashboard.putNumber("ControllerClimberLCurrent", mClimberL.getOutputCurrent());
         SmartDashboard.putNumber("ControllerClimberRCurrent", mClimberR.getOutputCurrent());
-        SmartDashboard.putNumber("ControllerClimberLTemp", mClimberL.getMotorTemperature());
-        SmartDashboard.putNumber("ControllerClimberRTemp", mClimberR.getMotorTemperature());
         SmartDashboard.putNumber("ControllerClimberLBusVoltage", mClimberL.getBusVoltage());
         SmartDashboard.putNumber("ControllerClimberRBusVoltage", mClimberR.getBusVoltage());
         SmartDashboard.putNumber("ControllerClimberLAppliedOutput", mClimberL.getAppliedOutput());
         SmartDashboard.putNumber("ControllerClimberRAppliedOutput", mClimberR.getAppliedOutput());
+        SmartDashboard.putNumber("ControllerClimberLId", mClimberL.getDeviceId());
+        SmartDashboard.putNumber("ControllerClimberRId", mClimberR.getDeviceId());
+        SmartDashboard.putNumber("ControllerClimberLBusVoltage", mClimberL.getFaults());
+        SmartDashboard.putNumber("ControllerClimberRBusVoltage", mClimberR.getFaults());
+        SmartDashboard.putString("ControllerClimberLMode", mClimberL.getIdleMode().toString());
+        SmartDashboard.putString("ControllerClimberRMode", mClimberR.getIdleMode().toString());
+        
+        SmartDashboard.putString("ControllerClimberLFirmwareString", mClimberL.getFirmwareString());
+        SmartDashboard.putBoolean("ControllerClimberLInverted", mClimberL.getInverted());
+        SmartDashboard.putString("ControllerClimberLSerialNumber", mClimberL.getSerialNumber().toString());
+        SmartDashboard.putNumber("ControllerClimberLVoltageCompensationNominalVoltage", mClimberL.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("ControllerClimberLMotorType", mClimberL.getMotorType().toString());
+        SmartDashboard.putNumber("ControllerClimberLMotorOutput", mClimberL.get());
+
+        SmartDashboard.putString("ControllerClimberRFirmwareString", mClimberR.getFirmwareString());
+        SmartDashboard.putBoolean("ControllerClimberRInverted", mClimberR.getInverted());
+        SmartDashboard.putString("ControllerClimberRSerialNumber", mClimberR.getSerialNumber().toString());
+        SmartDashboard.putNumber("ControllerClimberRVoltageCompensationNominalVoltage", mClimberR.getVoltageCompensationNominalVoltage());
+        SmartDashboard.putString("ControllerClimberRMotorType", mClimberR.getMotorType().toString());
+        SmartDashboard.putNumber("ControllerClimberRMotorOutput", mClimberR.get());
+        
+
         
         
         

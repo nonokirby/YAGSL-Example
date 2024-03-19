@@ -106,6 +106,10 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("Controller_FeederR_BusVoltage", mFeederR.getBusVoltage());
         SmartDashboard.putNumber("Controller_FeederR_AppliedOutput", mFeederR.getAppliedOutput());
         SmartDashboard.putNumber("Controller_FeederR_DeviceId", mFeederR.getDeviceId());
+
+        SmartDashboard.putNumber("test", mFeederL.getFaults());
+        mFeederL.get();
+        mFeederL.getFirmwareString();
       }
           
         
