@@ -1,10 +1,12 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.CANcoder;
+import com.ctre.phoenix6.sim.CANcoderSimState;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.climberL;
@@ -16,11 +18,10 @@ public class climber extends SubsystemBase{
   public CANSparkMax mClimberR = new CANSparkMax(climberR.id, climberR.neo);
   public CANcoder encoderL = new CANcoder(climberL.encoderid);
   public CANcoder encoderR = new CANcoder(climberR.encoderid);
-  //  leftencoderpos = encoderL.getPosition().getValueAsDouble();
   
 
 
-  PIDController kPID = new PIDController(climberL.Kp,climberL.Ki,climberL.Kd);
+  PIDController kPID = new PIDController(climberL.Kp, climberL.Ki, climberL.Kd);
   int rEncoderDistance;
   double speedL;
   double speedR;
@@ -32,14 +33,14 @@ public class climber extends SubsystemBase{
         mClimberR.setIdleMode(IdleMode.kBrake);
         mClimberR.setSmartCurrentLimit(climberR.current);
       }
+
     public void set(double input_speed){
       double speedL = input_speed * climberL.power;
       double speedR = input_speed * climberR.power;
       mClimberL.set(speedL);
       mClimberR.set(speedR);
-      //pid.calculate(getPosition(), position)
-
     }
+
     public void goSet(double setpoint){
       //sets modEncoderX to be a number where 0 is the bottom of the climber's state and 1 is the top
       double modEncoderL = encoderL.getPosition().getValueAsDouble()/climberL.ConversionRate; 
@@ -48,9 +49,6 @@ public class climber extends SubsystemBase{
       mClimberR.set(kPID.calculate(encoderR.getPosition().getValueAsDouble(), setpoint));
       SmartDashboard.putNumber("/Climber/ClimberL/Setpoint", setpoint);
       SmartDashboard.putNumber("/Climber/ClimberL/Setpoint", setpoint);
-
-      //mClimberR.set(pid.calculate(rEncoderDistance,setpoint));
-      
     }
 
     
@@ -69,17 +67,19 @@ public class climber extends SubsystemBase{
         mClimberL.set(0);
         LeftZero = true;
       }
+
       if (mClimberR.getEncoder().getVelocity() < 1000){ 
         encoderR.setPosition(0);
         mClimberR.set(0);
         RightZero = true;
       }
+
      }
      attempts--;
      while (mClimberL.getEncoder().getVelocity() < 5000);{
       mClimberL.set(1);
       mClimberR.set(1);
-    }
+     }
     }
   }
 

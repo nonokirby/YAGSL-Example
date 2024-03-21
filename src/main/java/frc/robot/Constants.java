@@ -87,6 +87,9 @@ public final class Constants
     public static double power  = 1; // Output speed multiplier  -1 to 1 
     public static int current = 30;
     public static IdleMode idle = IdleMode.kBrake;
+    public static double Kp = .5;
+    public static double Ki = 0;
+    public static double Kd = 0;
   }
 
   public static class limitSwitch{
@@ -99,7 +102,7 @@ public final class Constants
     public static int max = 2048; // in encoder ticks. 1024 tks = 360 deg
     public static int mid = 0; // in encoder ticks. 1024 tks = 360 deg
     public static int deviation = 250; // in encoder ticks. 1024 tks = 360 deg  defines how far from max or min the encoder can be
-    public static double curveDiv = 2;  
+    public static double curveDiv = 2;
     public static double curveMult = .1;
   }
 

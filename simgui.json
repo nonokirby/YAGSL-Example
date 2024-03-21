@@ -143,6 +143,18 @@
         "open": true
       },
       "SmartDashboard": {
+        "Climber": {
+          "ClimberL": {
+            "open": true
+          },
+          "ClimberR": {
+            "open": true
+          },
+          "LeftEncoder": {
+            "open": true
+          },
+          "open": true
+        },
         "Field": {
           "double[]##v_/SmartDashboard/Field/Robot": {
             "open": true
@@ -150,6 +162,12 @@
           "double[]##v_/SmartDashboard/Field/XModules": {
             "open": true
           }
+        },
+        "Shooter": {
+          "FeederL": {
+            "open": true
+          },
+          "open": true
         },
         "open": true,
         "swerve": {
@@ -171,8 +189,5 @@
         }
       }
     }
-  },
-  "NetworkTables Info": {
-    "visible": true
   }
 }
