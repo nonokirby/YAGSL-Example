@@ -159,6 +159,8 @@ public class RobotContainer
     shooterXbox.start().whileTrue(new eject());
     shooterXbox.leftBumper().whileTrue(new intake()).onFalse(new spit().withTimeout(.1));
     shooterXbox.rightBumper().whileTrue(new flywheel().withTimeout(.5).andThen(new feed()));
+    new JoystickButton(shooterXbox.getHID(), 1).whileTrue(new left());
+  
     
 
 

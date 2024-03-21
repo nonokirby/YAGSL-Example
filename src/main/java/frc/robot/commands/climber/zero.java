@@ -5,15 +5,17 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
-public class left extends Command{
+public class zero extends Command{
     
-    public left(){
+    public zero(){
         addRequirements(RobotContainer.climber);
     }
     public void execute(){
-        RobotContainer.climber.goSet(8000);
+        RobotContainer.climber.zero();
     }
-    public void end(){
+    public void end(Boolean interrupted){
+        if (interrupted == true){
+          System.out.println("Zeroing Climber Failed");
+        }
     }
-    
 }
