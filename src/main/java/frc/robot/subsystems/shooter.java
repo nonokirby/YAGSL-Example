@@ -110,11 +110,5 @@ public class shooter extends SubsystemBase {
         SmartDashboard.putNumber("test", mFeederL.getFaults());
         mFeederL.get();
         mFeederL.getFirmwareString();
-      }
-          
-        
+      }    
    }
-    
-
-    
-
