@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 
@@ -12,20 +13,20 @@ public class Logging extends SubsystemBase{
       
       // LeftEncoder
       SmartDashboard.putNumber("/Climber/LeftEncoder/Position", RobotContainer.climber.encoderL.getPosition().getValueAsDouble());
-      SmartDashboard.putNumber("/Climber/LeftEncoder/Velocity", climber.encoderL.getVelocity().getValueAsDouble());
-      SmartDashboard.putNumber("/Climber/LeftEncoder/DeviceID", climber.encoderL.getDeviceID());
-      SmartDashboard.putNumber("/Climber/LeftEncoder/SupplyVoltage", climber.encoderL.getSupplyVoltage().getValueAsDouble());
-      SmartDashboard.putString("/Climber/LeftEncoder/Version", climber.encoderL.getVersion().toString());
-      SmartDashboard.putString("/Climber/LeftEncoder/FaultField", climber.encoderL.getFaultField().toString());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/Velocity", RobotContainer.climber.encoderL.getVelocity().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/DeviceID", RobotContainer.climber.encoderL.getDeviceID());
+      SmartDashboard.putNumber("/Climber/LeftEncoder/SupplyVoltage", RobotContainer.climber.encoderL.getSupplyVoltage().getValueAsDouble());
+      SmartDashboard.putString("/Climber/LeftEncoder/Version", RobotContainer.climber.encoderL.getVersion().toString());
+      SmartDashboard.putString("/Climber/LeftEncoder/FaultField", RobotContainer.climber.encoderL.getFaultField().toString());
       // RightEncoder
-      SmartDashboard.putNumber("/Climber/RightEncoder/Position", climber.encoderR.getPosition().getValueAsDouble());
-      SmartDashboard.putNumber("/Climber/RightEncoder/Velocity", climber.encoderR.getVelocity().getValueAsDouble());
-      SmartDashboard.putNumber("/Climber/RightEncoder/DeviceID", climber.encoderR.getDeviceID());
-      SmartDashboard.putNumber("/Climber/RightEncoder/SupplyVoltage", climber.encoderR.getSupplyVoltage().getValueAsDouble());
-      SmartDashboard.putString("/Climber/RightEncoder/Version", climber.encoderR.getVersion().toString());
-      SmartDashboard.putString("/Climber/RightEncoder/FaultField", climber.encoderR.getFaultField().toString());
+      SmartDashboard.putNumber("/Climber/RightEncoder/Position", RobotContainer.climber.encoderR.getPosition().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/RightEncoder/Velocity", RobotContainer.climber.encoderR.getVelocity().getValueAsDouble());
+      SmartDashboard.putNumber("/Climber/RightEncoder/DeviceID", RobotContainer.climber.encoderR.getDeviceID());
+      SmartDashboard.putNumber("/Climber/RightEncoder/SupplyVoltage", RobotContainer.climber.encoderR.getSupplyVoltage().getValueAsDouble());
+      SmartDashboard.putString("/Climber/RightEncoder/Version", RobotContainer.climber.encoderR.getVersion().toString());
+      SmartDashboard.putString("/Climber/RightEncoder/FaultField", RobotContainer.climber.encoderR.getFaultField().toString());
       // ClimberL
-      SmartDashboard.putNumber("/Climber/ClimberL/Position", climber.mClimberL.getEncoder().getPosition());
+      SmartDashboard.putNumber("/Climber/ClimberL/Position", RobotContainer.climber.mClimberL.getEncoder().getPosition());
       SmartDashboard.putNumber("/Climber/ClimberL/Velocity", RobotContainer.climber.mClimberL.getEncoder().getVelocity());
       SmartDashboard.putNumber("/Climber/ClimberL/Temperature", RobotContainer.climber.mClimberL.getMotorTemperature());
       SmartDashboard.putNumber("/Climber/ClimberL/Current", RobotContainer.climber.mClimberL.getOutputCurrent());
@@ -119,7 +120,7 @@ public class Logging extends SubsystemBase{
       SmartDashboard.putString("/Shooter/FlywheelR/SerialNumber", RobotContainer.shooter.mFlywheelR.getSerialNumber().toString());
       SmartDashboard.putNumber("/Shooter/FlywheelR/StickyFaults", RobotContainer.shooter.mFlywheelR.getStickyFaults());
       SmartDashboard.putNumber("/Shooter/FlywheelR/VoltageCompensationNominalVoltage", RobotContainer.shooter.mFlywheelR.getVoltageCompensationNominalVoltage());
-      SmartDashboard.putString("/Shooter/FlywheelR/MotorType", RobotContainer.shooter.mFlywheelR.getMotorType().toString());
+      SmartDashboard.putString("/Shooter/FlywheelR/MotorType", RobotContainer.shooter.mFlywheelR.getMotorType().toString());   
       // FlywheelL
       SmartDashboard.putNumber("/Shooter/FlywheelL/Position", RobotContainer.shooter.mFlywheelL.getEncoder().getPosition());
       SmartDashboard.putNumber("/Shooter/FlywheelL/Velocity", RobotContainer.shooter.mFlywheelL.getEncoder().getVelocity());
@@ -136,4 +137,4 @@ public class Logging extends SubsystemBase{
       SmartDashboard.putNumber("/Shooter/FlywheelL/StickyFaults", RobotContainer.shooter.mFlywheelL.getStickyFaults());
       SmartDashboard.putNumber("/Shooter/FlywheelL/VoltageCompensationNominalVoltage", RobotContainer.shooter.mFlywheelL.getVoltageCompensationNominalVoltage());
       SmartDashboard.putString("/Shooter/FlywheelL/MotorType", RobotContainer.shooter.mFlywheelL.getMotorType().toString());
-    }
+    }}

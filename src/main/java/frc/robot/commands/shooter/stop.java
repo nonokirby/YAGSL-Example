@@ -10,12 +10,10 @@ public class stop extends Command{
     }
 
     public void execute() {
-        RobotContainer.shooter.feed(0);
-        RobotContainer.shooter.flywheel(0);
+
     }
 
     public void end(boolean interrupted) {
-
     }
 
 

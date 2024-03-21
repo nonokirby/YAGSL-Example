@@ -121,6 +121,12 @@
       "open": false
     },
     "transitory": {
+      "FMSInfo": {
+        "open": true
+      },
+      "LiveWindow": {
+        "open": true
+      },
       "PathPlanner": {
         "double[]##v_/PathPlanner/activePath": {
           "open": true
@@ -137,26 +143,13 @@
         "open": true
       },
       "SmartDashboard": {
-        "Encoders": {
-          "open": true
-        },
         "Field": {
           "double[]##v_/SmartDashboard/Field/Robot": {
             "open": true
           },
           "double[]##v_/SmartDashboard/Field/XModules": {
             "open": true
-          },
-          "open": true
-        },
-        "IMU": {
-          "open": true
-        },
-        "JSON": {
-          "open": true
-        },
-        "Swerve Drive": {
-          "open": true
+          }
         },
         "open": true,
         "swerve": {
@@ -174,8 +167,7 @@
           },
           "double[]##v_/SmartDashboard/swerve/wheelLocations": {
             "open": true
-          },
-          "open": true
+          }
         }
       }
     }

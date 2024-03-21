@@ -59,7 +59,7 @@ public class RobotContainer
   public final static frc.robot.subsystems.shooter shooter = new frc.robot.subsystems.shooter();
   public final static frc.robot.subsystems.Logging Logging = new frc.robot.subsystems.Logging();
   public final static frc.robot.subsystems.flap flap = new frc.robot.subsystems.flap();
-  
+   
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
@@ -169,17 +169,17 @@ public class RobotContainer
 
     //Dpad for Climber
 
-    new POVButton(shooterXbox.getHID(),  45).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(),   0).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(), 315).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(), 135).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(), 225).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(), 180).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(),  90).whileTrue(new right());
-    new POVButton(shooterXbox.getHID(), 270).whileTrue(new left());
+    new POVButton(shooterXbox.getHID(),  45).whileTrue(new left());
+    new POVButton(shooterXbox.getHID(),   0).whileTrue(new left());
+    new POVButton(shooterXbox.getHID(), 315).whileTrue(new left());
+    new POVButton(shooterXbox.getHID(), 135).whileTrue(new right());
+    new POVButton(shooterXbox.getHID(), 225).whileTrue(new right());
+    new POVButton(shooterXbox.getHID(), 180).whileTrue(new right());
+    new POVButton(shooterXbox.getHID(), 90).whileTrue(new right());
+    new POVButton(shooterXbox.getHID(), 270).whileTrue(new right());
 
     
-//    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
+  //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
   }
 
   /**

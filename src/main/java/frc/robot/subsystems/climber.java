@@ -46,6 +46,8 @@ public class climber extends SubsystemBase{
       double modencoderR = encoderR.getPosition().getValueAsDouble()/climberL.ConversionRate;
       mClimberL.set(kPID.calculate(modEncoderL, setpoint));
       mClimberR.set(kPID.calculate(modencoderR, setpoint));
+      SmartDashboard.putNumber("/Climber/ClimberL/Setpoint", setpoint);
+
       //mClimberR.set(pid.calculate(rEncoderDistance,setpoint));
       
     }
@@ -61,21 +63,22 @@ public class climber extends SubsystemBase{
         boolean LeftZero = false;
         boolean RightZero = false;
       while (!LeftZero || !RightZero){
-      if (mClimberL.getEncoder().getVelocity() < 10){ 
+      if (mClimberL.getEncoder().getVelocity() < 1000){ 
         encoderL.setPosition(0);
         mClimberL.set(0);
         LeftZero = true;
       }
-      if (mClimberR.getEncoder().getVelocity() < 10){ 
+      if (mClimberR.getEncoder().getVelocity() < 1000){ 
         encoderR.setPosition(0);
         mClimberR.set(0);
         RightZero = true;
       }
      }
      attempts--;
-     mClimberL.set(1);
-     mClimberR.set(1);
-     while (mClimberL.getEncoder().getVelocity() < 1500); 
+     while (mClimberL.getEncoder().getVelocity() < 5000);{
+      mClimberL.set(1);
+      mClimberR.set(1);
+    }
     }
   }
 
