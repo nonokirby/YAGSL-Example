@@ -1,7 +1,10 @@
 {
   "download": {
     "deleteAfter": false,
-    "localDir": "D:\\robotics",
+    "localDir": "C:\\Users\\Public\\wpilib\\2024\\frccode\\logs",
     "serverTeam": "7470"
+  },
+  "output": {
+    "outputFolder": "C:\\Users\\Public\\wpilib\\2024\\frccode\\logs"
   }
 }

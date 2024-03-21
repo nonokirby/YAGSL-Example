@@ -147,6 +147,9 @@ public class Robot extends TimedRobot
     m_robotContainer.setDriveMode();
     m_robotContainer.setMotorBrake(true);
     RobotContainer.climber.zero();
+    RobotContainer.climber.setup();
+    RobotContainer.Logging.start();
+
   }
 
   /**
@@ -162,7 +165,6 @@ public class Robot extends TimedRobot
   {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
-    RobotContainer.climber.zero();
     try
     {
       new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve"));

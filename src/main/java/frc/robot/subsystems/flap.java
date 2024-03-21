@@ -6,6 +6,7 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.*;
+import frc.robot.subsystems.shooter;
 
 import java.lang.Math;
 
@@ -19,8 +20,9 @@ public class flap extends SubsystemBase{
       mflap.set(speedL);
       mflap.set(speedR);
     }
+
     public void out(int position){
-        if (position == 0 || !sw.get())
-         mflap.set(1);
-      } 
+        if (position == 0 || !sw.get()){
+         mflap.set(1);}
+  } 
 }

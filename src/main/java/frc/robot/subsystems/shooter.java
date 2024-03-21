@@ -37,15 +37,25 @@ public class shooter extends SubsystemBase {
     }
 
     public void shoot(double feedRate, double flywheelSpeed){
-      double flywheelSpeedL = feedRate * flywheelL.power;
-      double flywheelSpeedR = feedRate * flywheelR.power;
+      double flywheelSpeedL = flywheelSpeed * flywheelL.power;
+      double flywheelSpeedR = flywheelSpeed * flywheelR.power;
       double feedSpeedL = feedRate * feederL.power;
       double feedSpeedR = feedRate * feederR.power;
       mFlywheelL.set(flywheelSpeedL);
       mFlywheelR.set(flywheelSpeedR);
       mFeederL.set(feedSpeedL);
       mFeederR.set(feedSpeedR);    
-    } 
+    }
+    public void shootIndividual(double feedRate, double flywheelSpeedL, double flywheelSpeedR){
+      double LeftFlywheelSpeed = flywheelSpeedL * flywheelL.power;
+      double RightFlywheelSpeed = flywheelSpeedR * flywheelR.power;
+      double LeftFeedSpeed = feedRate * feederL.power;
+      double RightFeedSpeed = feedRate * feederR.power;
+      mFlywheelL.set(LeftFlywheelSpeed);
+      mFlywheelR.set(RightFlywheelSpeed);
+      mFeederL.set(LeftFeedSpeed);
+      mFeederR.set(RightFeedSpeed);
+    }
 
     public void intakeboth(double feedRate, double intakerate){
       double intakeSpeed = feedRate * intake.power;
@@ -55,6 +65,14 @@ public class shooter extends SubsystemBase {
       mFeederL.set(feedSpeedL);
       mFeederR.set(feedSpeedR);    
     } 
+    public void setup(){
+
+    }          
+
+
+    
+
+
 
    /* public void periodic(){
         double flywheelSpeedL = RobotContainer.shooterXbox.getLeftTriggerAxis() * flywheelL.power;
