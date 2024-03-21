@@ -61,22 +61,25 @@ public class climber extends SubsystemBase{
         mClimberR.set(-1);
         boolean LeftZero = false;
         boolean RightZero = false;
+
       while (!LeftZero || !RightZero){
-      if (mClimberL.getEncoder().getVelocity() < 1000){ 
+
+      if (mClimberL.getEncoder().getVelocity() < 300){ 
         encoderL.setPosition(0);
         mClimberL.set(0);
         LeftZero = true;
       }
 
-      if (mClimberR.getEncoder().getVelocity() < 1000){ 
+      if (mClimberR.getEncoder().getVelocity() < 300){ 
         encoderR.setPosition(0);
         mClimberR.set(0);
         RightZero = true;
       }
-
      }
+
      attempts--;
-     while (mClimberL.getEncoder().getVelocity() < 5000);{
+     
+     while (mClimberL.getEncoder().getVelocity() < 1000){
       mClimberL.set(1);
       mClimberR.set(1);
      }
