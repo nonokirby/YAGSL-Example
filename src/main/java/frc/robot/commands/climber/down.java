@@ -11,9 +11,9 @@ public class down extends Command{
         addRequirements(RobotContainer.climber);
     }
     public void execute(){
-        RobotContainer.climber.set(-1);
+        RobotContainer.climber.goSet(0);
     }
     public void end(){
-        RobotContainer.climber.set(0);
+        
     }
 }

@@ -11,7 +11,7 @@ public class left extends Command{
         addRequirements(RobotContainer.climber);
     }
     public void execute(){
-        RobotContainer.climber.goSet(8000);
+        RobotContainer.climber.setInd(1,0);
     }
     public void end(){
     }
