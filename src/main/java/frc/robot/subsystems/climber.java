@@ -18,10 +18,8 @@ public class climber extends SubsystemBase{
   public CANSparkMax mClimberR = new CANSparkMax(climberR.id, climberR.neo);
   public CANcoder encoderL = new CANcoder(climberL.encoderid);
   public CANcoder encoderR = new CANcoder(climberR.encoderid);
-  
-
-
   PIDController kPID = new PIDController(climberL.Kp, climberL.Ki, climberL.Kd);
+
   int rEncoderDistance;
   double speedL;
   double speedR;
@@ -32,6 +30,7 @@ public class climber extends SubsystemBase{
         mClimberR.clearFaults();
         mClimberR.setIdleMode(IdleMode.kBrake);
         mClimberR.setSmartCurrentLimit(climberR.current);
+        
       }
 
     public void set(double input_speed){
@@ -55,19 +54,24 @@ public class climber extends SubsystemBase{
     //basically ram the climber into itself until it stops repeatedly to determine zero point for cancoders
     //somewhat like a prusa 3d printer
     public void zero(){
-      int attempts = 3; 
+      int attempts = 2; 
+      mClimberL.set(-1);
+      mClimberR.set(-1);
       while (!(attempts==0)) {
-        mClimberL.set(-1);
-        mClimberR.set(-1);
+
         boolean LeftZero = false;
         boolean RightZero = false;
 
       while (!LeftZero || !RightZero){
 
+
       if (mClimberL.getEncoder().getVelocity() < 300){ 
         encoderL.setPosition(0);
         mClimberL.set(0);
         LeftZero = true;
+      }
+      else{
+        mClimberL.set(-1);
       }
 
       if (mClimberR.getEncoder().getVelocity() < 300){ 
@@ -75,17 +79,17 @@ public class climber extends SubsystemBase{
         mClimberR.set(0);
         RightZero = true;
       }
+      else{
+        mClimberR.set(-1);
+      }
      }
 
      attempts--;
+      mClimberL.set(kPID.calculate(encoderL.getPosition().getValueAsDouble(), 1000));
+      mClimberR.set(kPID.calculate(encoderR.getPosition().getValueAsDouble(), 1000));
      
-     while (mClimberL.getEncoder().getVelocity() < 1000){
-      mClimberL.set(1);
-      mClimberR.set(1);
-     }
     }
   }
-
     public void setInd(double input_speedL, double input_speedR){
       double speedL = input_speedL * climberL.power;
       double speedR = input_speedR * climberR.power;

@@ -11,7 +11,7 @@ public class lower extends Command{
         addRequirements(RobotContainer.flap);
     }
     public void execute(){
-        RobotContainer.flap.set(-1);
+        RobotContainer.flap.setpoint(0);
     }
     public void end(){
         //RobotContainer.climber.climb(0);

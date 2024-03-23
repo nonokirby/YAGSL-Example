@@ -205,8 +205,12 @@ public class SwerveSubsystem extends SubsystemBase
       double xInput = Math.pow(translationX.getAsDouble(), 3); // Smooth controll out
       double yInput = Math.pow(translationY.getAsDouble(), 3); // Smooth controll out
       // Make the robot move
-      driveFieldOriented(ChassisSpeeds.fromFieldRelativeSpeeds(new ChassisSpeeds(yInput * 3.0, xInput* 3.0, headingX.getAsDouble() * 2.0 * Math.PI), getHeading()));
-    });
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
+      headingX.getAsDouble(),
+      headingY.getAsDouble(),
+      swerveDrive.getOdometryHeading().getRadians(),
+      swerveDrive.getMaximumVelocity()));
+});
   }
 
   /**

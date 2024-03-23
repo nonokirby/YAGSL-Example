@@ -12,6 +12,7 @@ public class down extends Command{
     }
     public void execute(){
         RobotContainer.climber.goSet(0);
+        System.out.println("Climber Down");
     }
     public void end(){
         

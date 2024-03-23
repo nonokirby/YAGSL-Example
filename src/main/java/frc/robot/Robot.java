@@ -64,6 +64,7 @@ public class Robot extends TimedRobot
     disabledTimer = new Timer();
     DataLogManager.start();
     DriverStation.startDataLog(DataLogManager.getLog());
+    SmartDashboard.putData("Auto Selector", new SendableChooser<String>());
   }
 
   /**
@@ -112,7 +113,7 @@ public class Robot extends TimedRobot
   public void autonomousInit()
   {
     m_robotContainer.setMotorBrake(true);
-    RobotContainer.climber.zero();
+    //RobotContainer.climber.zero();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -148,6 +149,7 @@ public class Robot extends TimedRobot
     m_robotContainer.setMotorBrake(true);
     RobotContainer.climber.zero();
     RobotContainer.climber.setup();
+    RobotContainer.flap.zero();
     RobotContainer.Logging.start();
 
   }

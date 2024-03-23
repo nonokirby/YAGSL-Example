@@ -137,4 +137,7 @@ public class Logging extends SubsystemBase{
       SmartDashboard.putNumber("/Shooter/FlywheelL/StickyFaults", RobotContainer.shooter.mFlywheelL.getStickyFaults());
       SmartDashboard.putNumber("/Shooter/FlywheelL/VoltageCompensationNominalVoltage", RobotContainer.shooter.mFlywheelL.getVoltageCompensationNominalVoltage());
       SmartDashboard.putString("/Shooter/FlywheelL/MotorType", RobotContainer.shooter.mFlywheelL.getMotorType().toString());
+
+      SmartDashboard.putBoolean("/Flap/Switch", RobotContainer.flap.sw.get());
+      SmartDashboard.putNumber("/Flap/position", RobotContainer.flap.mflap.getEncoder().getPosition());
     }}

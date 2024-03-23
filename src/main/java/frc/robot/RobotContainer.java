@@ -63,8 +63,8 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
-                                                                    
-  public SendableChooser<String> autochooser  = new SendableChooser<String>();
+                                  
+  public SendableChooser<String> autochooser  = new SendableChooser<String>();                                  
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //CommandJoystick driverController = new CommandJoystick(1);
@@ -159,7 +159,8 @@ public class RobotContainer
     shooterXbox.start().whileTrue(new eject());
     shooterXbox.leftBumper().whileTrue(new intake()).onFalse(new spit().withTimeout(.1));
     shooterXbox.rightBumper().whileTrue(new flywheel().withTimeout(.5).andThen(new feed()));
-    new JoystickButton(shooterXbox.getHID(), 1).whileTrue(new left());
+    shooterXbox.a().onTrue(new raise());
+    shooterXbox.b().onTrue(new lower());
   
     
 
@@ -171,14 +172,14 @@ public class RobotContainer
 
     //Dpad for Climber
 
-    new POVButton(shooterXbox.getHID(),  45).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(),   0).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(), 315).whileTrue(new up());
-    new POVButton(shooterXbox.getHID(), 135).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(), 225).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(), 180).whileTrue(new down());
-    new POVButton(shooterXbox.getHID(), 90).whileTrue(new right());
-    new POVButton(shooterXbox.getHID(), 270).whileTrue(new left());
+    shooterXbox.povUp().whileTrue(new up());
+    shooterXbox.povUp().whileTrue(new up());
+    shooterXbox.povUp().whileTrue(new up());
+    shooterXbox.povDown().whileTrue(new down());
+    shooterXbox.povDown().whileTrue(new down());
+    shooterXbox.povDown().whileTrue(new down());
+    shooterXbox.povRight().whileTrue(new right());
+    shooterXbox.povLeft().whileTrue(new left());
 
     
   //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
@@ -192,7 +193,10 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand(autochooser.getSelected());
+    return drivebase.getAutonomousCommand("Shoot Taxi ");
+    //"Nothing"
+    //"Shoot Taxi Intake"
+    //"Taxi Only"
   }
 
   public void setDriveMode()

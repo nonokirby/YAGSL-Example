@@ -16,7 +16,7 @@ import java.lang.Math;
 public class flap extends SubsystemBase{
   CANSparkMax mflap = new CANSparkMax(ampFlap.id, ampFlap.neo);
   double speed;
-  DigitalInput sw = new DigitalInput(limitSwitch.dioId); 
+  public DigitalInput sw = new DigitalInput(limitSwitch.dioId); 
   PIDController pid = new PIDController(ampFlap.Kp, ampFlap.Ki, ampFlap.Kd);
     public void set(double input_speed){
       double speedL = input_speed * climberL.power;
@@ -26,18 +26,23 @@ public class flap extends SubsystemBase{
     }
 
     public void setpoint(double setpoint){
-      pid.calculate(mflap.getEncoder().getPosition(), setpoint);
+      mflap.set(pid.calculate(mflap.getEncoder().getPosition(), setpoint));
     }
     
     public void zero(){
-      mflap.set(-1);
-      if (sw.get()){
+      
+      while (sw.get()){
+        mflap.set(-.3* ampFlap.power);
+      }
         mflap.set(0);
         mflap.getEncoder().setPosition(0);
-      }
+        
+      
+      
     }
     public void out(int position){
         if (position == 0 || !sw.get()){
-         mflap.set(1);}
+         mflap.set(1);
+    }
   } 
 }

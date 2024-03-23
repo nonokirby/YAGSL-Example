@@ -84,10 +84,10 @@ public final class Constants
     public static CANSparkLowLevel.MotorType neo = MotorType.kBrushless;
     public static CANSparkLowLevel.MotorType old = MotorType.kBrushed;
     public static int id  = 20;
-    public static double power  = 1; // Output speed multiplier  -1 to 1 
+    public static double power  = .5; // Output speed multiplier  -1 to 1 
     public static int current = 30;
     public static IdleMode idle = IdleMode.kBrake;
-    public static double Kp = .5;
+    public static double Kp = .3;
     public static double Ki = 0;
     public static double Kd = 0;
   }
