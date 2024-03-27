@@ -206,10 +206,11 @@ public class SwerveSubsystem extends SubsystemBase
       double yInput = Math.pow(translationY.getAsDouble(), 3); // Smooth controll out
       // Make the robot move
       driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
-      headingX.getAsDouble(),
-      headingY.getAsDouble(),
-      swerveDrive.getOdometryHeading().getRadians(),
-      swerveDrive.getMaximumVelocity()));
+          headingX.getAsDouble(),
+          headingY.getAsDouble(),
+          swerveDrive.getOdometryHeading().getRadians(),
+          swerveDrive.getMaximumVelocity()));
+      
 });
   }
 
@@ -519,8 +520,7 @@ public class SwerveSubsystem extends SubsystemBase
    * Add a fake vision reading for testing purposes.
    */
   public void addFakeVisionReading()
-  {
-    swerveDrive.addVisionMeasurement(new Pose2d(3, 3, Rotation2d.fromDegrees(65)), Timer.getFPGATimestamp());
+  {swerveDrive.addVisionMeasurement(new Pose2d(3, 3, Rotation2d.fromDegrees(65)), Timer.getFPGATimestamp());
     //LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
    /*if(limelightMeasurement.tagCount >= 2)
    {

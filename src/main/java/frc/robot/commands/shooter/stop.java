@@ -10,7 +10,6 @@ public class stop extends Command{
     }
 
     public void execute() {
-
     }
 
     public void end(boolean interrupted) {

@@ -101,8 +101,8 @@ public class RobotContainer
     // right stick controls the desired angle NOT angular rotation
     Command driveFieldOrientedDirectAngle = drivebase.driveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX() * -1, OperatorConstants.LEFT_X_DEADBAND),
-        () -> driverXbox.getRightX(),
+        () -> MathUtil.applyDeadband(driverXbox.getLeftX()*-1, OperatorConstants.LEFT_X_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getRightX(), OperatorConstants.RIGHT_X_DEADBAND),
         () -> driverXbox.getRightY());
     
 
@@ -193,7 +193,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Shoot Taxi ");
+    return drivebase.getAutonomousCommand("Shoot Taxi Intake");
     //"Nothing"
     //"Shoot Taxi Intake"
     //"Taxi Only"

@@ -87,7 +87,7 @@ public final class Constants
     public static double power  = .5; // Output speed multiplier  -1 to 1 
     public static int current = 30;
     public static IdleMode idle = IdleMode.kBrake;
-    public static double Kp = .3;
+    public static double Kp = .35;
     public static double Ki = 0;
     public static double Kd = 0;
   }
@@ -136,7 +136,8 @@ public final class Constants
     // Joystick Deadband
     public static final double LEFT_X_DEADBAND  = 0.1;
     public static final double LEFT_Y_DEADBAND  = 0.1;
-    public static final double RIGHT_X_DEADBAND = 0.1;
+    public static final double RIGHT_X_DEADBAND = 0.2;
+    
     public static final double TURN_CONSTANT    = 6;
   }  
   public static class Climber{

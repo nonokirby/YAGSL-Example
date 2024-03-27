@@ -11,7 +11,7 @@ public class up extends InstantCommand{
         addRequirements(RobotContainer.climber);
     }
     public void execute(){
-        RobotContainer.climber.goSet(-10000);
+        RobotContainer.climber.goSet(-43.6);
     }
     public void end(){
     }
