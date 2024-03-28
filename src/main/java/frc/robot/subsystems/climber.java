@@ -44,10 +44,10 @@ public class climber extends SubsystemBase{
       //sets modEncoderX to be a number where 0 is the bottom of the climber's state and 1 is the top
       double modEncoderL = encoderL.getPosition().getValueAsDouble()/climberL.ConversionRate; 
       double modencoderR = encoderR.getPosition().getValueAsDouble()/climberL.ConversionRate;
-      mClimberL.set(kPID.calculate(mClimberL.getEncoder().getPosition(), setpoint));
-      //mClimberR.set(kPID.calculate(encoderR.getPosition().getValueAsDouble(), setpoint));
-      SmartDashboard.putNumber("/Climber/ClimberL/Setpoint", setpoint);
-      SmartDashboard.putNumber("/Climber/ClimberL/Setpoint", setpoint);
+      mClimberL.set(kPID.calculate(encoderL.getPosition().getValueAsDouble(), setpoint));
+      mClimberR.set(kPID.calculate(encoderL.getPosition().getValueAsDouble(), setpoint));
+      SmartDashboard.putNumber("Climber/ClimberL/Setpoint", setpoint);
+      SmartDashboard.putNumber("Climber/ClimberL/Setpoint", setpoint);
     }
 
     

@@ -65,7 +65,7 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
                                   
-  public SendableChooser<String> autochooser  = new SendableChooser<String>();                                  
+  public SendableChooser<String> autochooser  = new SendableChooser<>();                                  
   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //CommandJoystick driverController = new CommandJoystick(1);
@@ -127,13 +127,14 @@ public class RobotContainer
     drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
-    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(.5).andThen(new feed().withTimeout(1)));
-    NamedCommands.registerCommand("Intake", new intake().withTimeout(3));
-    NamedCommands.registerCommand("Lower Note", new spit().withTimeout(.1));
+    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(5).andThen(new feed().withTimeout(1)).andThen(new flywheelSpit().withTimeout(1)));
+    NamedCommands.registerCommand("Intake", new intake().withTimeout(5).andThen(new spit().withTimeout(.1)));
 
-    autochooser.setDefaultOption("Do nothing", new String("Nothing"));
-    autochooser.addOption("Shoot", new String("Shoot Taxi Intake"));
-    autochooser.addOption("Taxi", new String("Taxi Only"));
+    autochooser.setDefaultOption("Do nothing", "Nothing");
+    autochooser.addOption("2 Note", "Shoot Taxi Intake");
+    autochooser.addOption("Taxi", "Taxi Only");
+    
+
   }
 
   /**
@@ -195,7 +196,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Shoot Taxi Intake");
+    return drivebase.getAutonomousCommand(autochooser.getSelected());
     //"Nothing"
     //"Shoot Taxi Intake"
     //"Taxi Only"
@@ -211,15 +212,3 @@ public class RobotContainer
     drivebase.setMotorBrake(brake);
   }
 } 
-// ltrigger rev flywheels done
-// rtrigger run feeder done
-// climber up and down on pov
-// climber tilt on pov 
-// left brings up left side, right brings up right side
-// left bumper triggers intake 
-// a puts flap out
-// b brings flap in
-
-
-//driver 
-// 
