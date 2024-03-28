@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -45,6 +46,7 @@ import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
 import com.fasterxml.jackson.core.sym.Name;
+import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
@@ -64,9 +66,9 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
-                                  
-  public SendableChooser<String> autochooser  = new SendableChooser<>();                                  
-  // CommandJoystick rotationController = new CommandJoystick(1);
+  private final SendableChooser<Command> autoChooser;
+                        
+   // CommandJoystick rotationController = new CommandJoystick(1);
   // Replace with CommandPS4Controller or CommandJoystick if needed
   //CommandJoystick driverController = new CommandJoystick(1);
 
@@ -127,14 +129,12 @@ public class RobotContainer
     drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
-    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(5).andThen(new feed().withTimeout(1)).andThen(new flywheelSpit().withTimeout(1)));
-    NamedCommands.registerCommand("Intake", new intake().withTimeout(5).andThen(new spit().withTimeout(.1)));
+    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(0).andThen(new feed().withTimeout(0)).andThen(new flywheelSpit().withTimeout(1)));
+    NamedCommands.registerCommand("Intake", new intake().withTimeout(0).andThen(new spit().withTimeout(0)));
 
-    autochooser.setDefaultOption("Do nothing", "Nothing");
-    autochooser.addOption("2 Note", "Shoot Taxi Intake");
-    autochooser.addOption("Taxi", "Taxi Only");
-    
+    autoChooser = AutoBuilder.buildAutoChooser();
 
+    SmartDashboard.putData("Auto Chooser", autoChooser);
   }
 
   /**
@@ -196,7 +196,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand(autochooser.getSelected());
+    return autoChooser.getSelected();
     //"Nothing"
     //"Shoot Taxi Intake"
     //"Taxi Only"

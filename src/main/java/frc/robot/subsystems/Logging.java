@@ -9,7 +9,7 @@ import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 public class Logging extends SubsystemBase{
 
     public void start(){}
-    public void periodic(){
+    /*public void periodic(){
       
       // LeftEncoder
       SmartDashboard.putNumber("Climber/LeftEncoder/Position", RobotContainer.climber.encoderL.getPosition().getValueAsDouble());
@@ -140,5 +140,5 @@ public class Logging extends SubsystemBase{
 
             SmartDashboard.putBoolean("Flap/Switch", RobotContainer.flap.sw.get());
             SmartDashboard.putNumber("Flap/position", RobotContainer.flap.mflap.getEncoder().getPosition());
-            }
+            }*/
           }

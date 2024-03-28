@@ -119,7 +119,7 @@ public class Robot extends TimedRobot
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null)
     {
-      m_autonomousCommand.withTimeout(15.0).schedule();
+      m_autonomousCommand.schedule();
     }
     
   }
@@ -136,21 +136,24 @@ public class Robot extends TimedRobot
   public void teleopInit()
   {
 
-    CommandScheduler.getInstance().cancelAll();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null)
-    {
-      m_autonomousCommand.cancel();
-    }
+    CommandScheduler.getInstance().cancelAll();
+    // if (m_autonomousCommand != null)
+    // {
+    //   if (!m_autonomousCommand.isScheduled()){
+    //   m_autonomousCommand.cancel();
+    // }
+    // }
+
     m_robotContainer.setDriveMode();
     m_robotContainer.setMotorBrake(true);
     RobotContainer.climber.zero();
     RobotContainer.climber.setup();
     RobotContainer.flap.zero();
-    RobotContainer.Logging.start();
+    //RobotContainer.Logging.start();
 
   }
 
