@@ -15,6 +15,8 @@ public class flapszero extends Command{
     public void execute(){
         RobotContainer.flap.set(-1);}
     public void end(){
+        RobotContainer.flap.zero();
+        RobotContainer.flap.set(0);
         //RobotContainer.climber.climb(0);
     }
     public boolean isFinished(){

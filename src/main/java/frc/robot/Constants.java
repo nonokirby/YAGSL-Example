@@ -87,9 +87,9 @@ public final class Constants
     public static double power  = .5; // Output speed multiplier  -1 to 1 
     public static int current = 30;
     public static IdleMode idle = IdleMode.kBrake;
-    public static double Kp = .35;
+    public static double Kp = .45;
     public static double Ki = 0;
-    public static double Kd = 0;
+    public static double Kd = 0.001;
   }
 
   public static class limitSwitch{

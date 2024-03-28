@@ -11,7 +11,7 @@ public class raise extends Command{
         addRequirements(RobotContainer.flap);
     }
     public void execute(){
-        RobotContainer.flap.setpoint(.93);
+        RobotContainer.flap.setpoint(.85);
     }
     public void end(){
         //RobotContainer.climber.climb(0);

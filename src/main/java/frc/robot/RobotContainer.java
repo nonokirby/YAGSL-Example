@@ -34,6 +34,7 @@ import frc.robot.commands.flap.raise;
 import frc.robot.commands.shooter.eject;
 import frc.robot.commands.shooter.feed;
 import frc.robot.commands.shooter.flywheel;
+import frc.robot.commands.shooter.flywheelSpit;
 import frc.robot.commands.shooter.intake;
 import frc.robot.commands.shooter.spit;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
@@ -101,9 +102,9 @@ public class RobotContainer
     // right stick controls the desired angle NOT angular rotation
     Command driveFieldOrientedDirectAngle = drivebase.driveCommand(
         () -> MathUtil.applyDeadband(driverXbox.getLeftY(), OperatorConstants.LEFT_Y_DEADBAND),
-        () -> MathUtil.applyDeadband(driverXbox.getLeftX()*-1, OperatorConstants.LEFT_X_DEADBAND),
+        () -> MathUtil.applyDeadband(driverXbox.getLeftX(), OperatorConstants.LEFT_X_DEADBAND),
         () -> MathUtil.applyDeadband(driverXbox.getRightX(), OperatorConstants.RIGHT_X_DEADBAND),
-        () -> driverXbox.getRightY());
+        () -> MathUtil.applyDeadband(driverXbox.getRightY(), OperatorConstants.RIGHT_X_DEADBAND));
     
 
     // Applies deadbands and inverts controls because joysticks
@@ -156,7 +157,7 @@ public class RobotContainer
     shooterXbox.b().whileTrue(new lower());
     shooterXbox.leftBumper().whileTrue(new intake());
     shooterXbox.leftTrigger().whileTrue(new flywheel());*/
-    shooterXbox.start().whileTrue(new eject());
+    shooterXbox.start().whileTrue(new eject().andThen(new flywheelSpit().withTimeout(.1)));
     shooterXbox.leftBumper().whileTrue(new intake()).onFalse(new spit().withTimeout(.1));
     shooterXbox.rightBumper().whileTrue(new flywheel().withTimeout(.5).andThen(new feed()));
     shooterXbox.a().onTrue(new raise());
@@ -184,6 +185,7 @@ public class RobotContainer
     
   //    new JoystickButton(driverXbox, 3).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
   }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
