@@ -129,8 +129,8 @@ public class RobotContainer
     drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
-    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(0).andThen(new feed().withTimeout(0)).andThen(new flywheelSpit().withTimeout(1)));
-    NamedCommands.registerCommand("Intake", new intake().withTimeout(0).andThen(new spit().withTimeout(0)));
+    NamedCommands.registerCommand("Shoot", new flywheel().withTimeout(4).andThen(new feed().withTimeout(.3)).andThen(new flywheelSpit().withTimeout(.5)));
+    NamedCommands.registerCommand("Intake", new intake().withTimeout(5).andThen(new spit().withTimeout(.1)));
 
     autoChooser = AutoBuilder.buildAutoChooser();
 

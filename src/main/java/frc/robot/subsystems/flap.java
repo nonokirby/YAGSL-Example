@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import frc.robot.Constants.limitSwitch;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.util.PIDConstants;
 import com.revrobotics.CANSparkMax;
